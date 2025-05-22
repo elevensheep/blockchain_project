@@ -1,0 +1,50 @@
+.banner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #252729;
+  border-radius: 12px;
+  padding: 1rem;
+  position: relative;
+  width: 100%;
+  color: white;
+}
+
+.banner-nav-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 1rem;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.banner-nav-btn:hover {
+  transform: scale(1.2);
+}
+
+.banner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.banner-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.banner-info h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.banner-info p {
+  font-size: 1rem;
+  font-weight: bold;
+}
