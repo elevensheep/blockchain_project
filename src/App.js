@@ -1,17 +1,18 @@
-// App.js
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login/login';
 import Signup from './Login/signup';
-import Banner from './Component/banner';
+import MainPage from './MainPage/MainPage';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Banner />
       <Router>
+        <MainPage />
+
+        {/* 추후 로그인/회원가입용 라우트 */}
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </Router>

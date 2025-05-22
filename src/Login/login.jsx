@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/Login.css';
+import '../Style/Login.css';
 
 const Login = () => {
   const handleSubmit = (e) => {
