@@ -8,10 +8,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <MainPage />
 
         {/* 추후 로그인/회원가입용 라우트 */}
         <Routes>
+          <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>

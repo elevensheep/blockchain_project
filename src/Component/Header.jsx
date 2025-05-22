@@ -1,8 +1,12 @@
-import React from "react";
+import React from 'react';
+import { Navigate, useNavigate } from "react-router-dom";
 import { FaCar } from 'react-icons/fa';
 import "../App.css";
 
+
 const Header = () => {
+    const navigate = useNavigate();
+
     return (
         <header className="main-header">
             <div className="left-section">
@@ -15,8 +19,8 @@ const Header = () => {
                 </nav>
             </div>
             <div className="login-signup">
-                <button className="login-btn">로그인</button>
-                <button className="signup-btn">회원가입</button>
+                <button className="login-btn" onClick={() => navigate('/login')}>로그인</button>
+                <button className="signup-btn" onClick={() => navigate('/signup')}>회원가입</button>
             </div>
         </header>
     );
