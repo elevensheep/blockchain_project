@@ -1,0 +1,82 @@
+.add-car-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh - 2rem;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    padding: 5rem 2rem 2rem;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 700px;
+    padding: 4rem 3rem;
+    border-radius: 12px;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.car-form {
+    font-size: 1.2rem;
+}
+
+.inline-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.inline-field label {
+    margin-right: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.inline-field .input {
+    flex: 1;
+    min-width: 300px;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #2a2e34;
+    color: white;
+}
+
+.inline-field .suffix {
+    margin-left: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.note {
+    font-size: 0.95rem;
+    margin: 2rem 0;
+    line-height: 1.5;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.submit-button {
+    background-color: #003d99;
+    color: white;
+    font-size: 1.2rem;
+    width: 50%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #002a70;
+}

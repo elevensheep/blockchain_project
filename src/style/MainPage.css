@@ -15,60 +15,6 @@ body,
   overflow-x: hidden;
 }
 
-.main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #000;
-  color: white;
-}
-
-.left-section {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.logo {
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-links {
-  display: flex;
-}
-
-.nav-links a {
-  margin: 0 0.5rem;
-  color: white;
-  text-decoration: none;
-}
-
-.login-signup {
-  display: flex;
-  width: 250px;
-  gap: 0.5rem;
-}
-
-.login-signup button {
-  background: #252729;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-}
-
-.logo {
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .main-page {
   background: linear-gradient(to top, #1C1E29, #263645);
   color: white;
