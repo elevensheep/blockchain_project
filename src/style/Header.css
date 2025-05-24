@@ -20,6 +20,10 @@
   gap: 0.5rem;
 }
 
+.logo-text {
+  font-family: 'BMHANNAPro';
+}
+
 .nav-links {
   display: flex;
 }
@@ -27,6 +31,7 @@
 .nav-links a {
   margin: 0 0.5rem;
   color: white;
+  font-family: 'BMHANNAPro';
   text-decoration: none;
 }
 
@@ -43,4 +48,5 @@
   border-radius: 6px;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
 }

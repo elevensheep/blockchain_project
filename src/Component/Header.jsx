@@ -12,7 +12,7 @@ const Header = () => {
             <div className="left-section">
                 <div className="logo">
                     <Link to="/" className="logo-link" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <FaCar className="icon" /> 체인카
+                        <FaCar className="icon" /> <span className="logo-text">체인카</span>
                     </Link>
                 </div>
                 <nav className="nav-links">
