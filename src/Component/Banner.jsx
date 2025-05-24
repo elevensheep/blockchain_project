@@ -3,11 +3,11 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "../Style/Banner.css";
 
 const images = [
-  require("../Image/KakaoTalk_20250523_170150241.png"),
-  require("../Image/KakaoTalk_20250523_170150241_01.png"),
-  require("../Image/KakaoTalk_20250523_170150241_02.png"),
-  require("../Image/KakaoTalk_20250523_170150241_03.png"),
-  require("../Image/KakaoTalk_20250523_170150241_04.png"),
+  // require("../Image/Bannerimage1.png"),
+  require("../Image/Bannerimage2.png"),
+  // require("../Image/Bannerimage3.png"),
+  // require("../Image/Bannerimage4.png"),
+  // require("../Image/Bannerimage5.png"),
 ];
 
 function Banner() {
@@ -59,11 +59,13 @@ function Banner() {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <img
-          src={images[current]}
-          alt={`slide-${current}`}
-          className="banner-img"
-        />
+        {images[current] && (
+          <img
+            src={images[current]}
+            alt={`slide-${current}`}
+            className="banner-img"
+         />
+        )}
       </div>
 
       <button className="nav-arrow right" onClick={handleNext}>

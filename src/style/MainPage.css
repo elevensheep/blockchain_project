@@ -12,6 +12,83 @@
   color: white;
 }
 
+/* 삼각형 배경 섹션 */
+.triangle-section {
+  position: relative;
+  width: 100%;
+  background-color: #0d1b2a;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  padding: 60px 0 100px;
+  z-index: 1;
+}
+
+/* 차량 리스트 (삼각형 내부) */
+.car-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.car-card {
+  background-color: #1c2a3a;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  color: white;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+}
+
+.car-image {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+.badge.diagnose {
+  background-color: #193a64;
+  color: white;
+}
+
+.badge.trust {
+  background-color: #e5e5e5;
+  color: #333;
+}
+
+.car-name {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 12px 0;
+}
+
+.car-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* 검색 영역 */
 .hero {
   display: flex;
   flex-direction: column;
@@ -27,7 +104,7 @@
   justify-content: center;
 }
 
-.search-box>* {
+.search-box > * {
   width: 100%;
   max-width: 900px;
 }
@@ -39,29 +116,7 @@
   margin-bottom: 1.5rem;
 }
 
-.car-section {
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-.car-section h2 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-.car-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.car-list img {
-  width: 160px;
-  height: auto;
-  border-radius: 8px;
-}
-
+/* 기능 아이콘 섹션 */
 .features {
   display: flex;
   justify-content: center;
@@ -90,6 +145,7 @@
   font-weight: 500;
 }
 
+/* 파트너 로고 섹션 */
 .partner-section {
   padding-bottom: 6rem;
   position: relative;

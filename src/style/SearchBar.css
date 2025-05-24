@@ -4,9 +4,10 @@
   background-color: #f4f9fd;
   border-radius: 20px;
   padding: 0.4rem 1rem;
-  max-width: 700px;
+  max-width: 1178px;
+  max-height: 89px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  height: 60px;
+  margin-bottom: 30px
 }
 
 .search-bar-wrapper {
@@ -56,6 +57,7 @@
   transition: background-color 0.2s ease;
   padding: 0;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .search-button:hover {

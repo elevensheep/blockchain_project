@@ -1,15 +1,40 @@
 .footer {
-    background-color: #252729;
-    color: #aaa;
-    text-align: center;
-    margin-top: 0;
-    padding: 2rem 0;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
+  background-color: #252729;
+  color: #aaa;
+  padding: 2rem 0;
 }
 
-.footer-info {
-    font-size: 0.9rem;
-    line-height: 1.8;
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-left p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+}
+
+.footer-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-right img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* 아이콘을 흰색으로 보이게 */
+  transition: transform 0.3s;
+}
+
+.footer-right img:hover {
+  transform: scale(1.1);
 }
