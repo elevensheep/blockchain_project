@@ -70,14 +70,6 @@ const MainPage = () => {
                     <img src={partner3} alt="DB손해보험" />
                     <img src={partner4} alt="현대해상" />
                 </div>
-
-                <footer className="footer">
-                    <div className="footer-info">
-                        <p>제작자 | SANGCHAI</p>
-                        <p>고객센터 1544-6612 | help@sansaride.kr</p>
-                        <p>© 2024 sansaride. All rights reserved.</p>
-                    </div>
-                </footer>
             </section>
         </div>
     );

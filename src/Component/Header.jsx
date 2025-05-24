@@ -1,6 +1,4 @@
-
-import React from 'react';
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaCar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import "../Style/Header.css";
@@ -14,7 +12,7 @@ const Header = () => {
             <div className="left-section">
                 <div className="logo">
                     <Link to="/" className="logo-link" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <FaCar className="icon" /> 체인카
+                        <FaCar className="icon" /> <span className="logo-text">체인카</span>
                     </Link>
                 </div>
                 <nav className="nav-links">

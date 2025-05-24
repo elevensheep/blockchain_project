@@ -1,8 +1,11 @@
-import React from "react";
+import { useState } from 'react';
 import "../Style/CarInfoPage.css";
 import carImage from "../Image/test-car.png";
+import CarRepairModal from '../CarRepairModal/CarRepairModal';
 
 const CarInfoPage = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const carInfo = {
         carName: "현대 아반떼 CN7",
         manufactureYear: "2021년",
@@ -60,7 +63,13 @@ const CarInfoPage = () => {
                     </ul>
                 </div>
 
-                <button className="certify-button">차량 인증 신청하기</button>
+                <div className="button-group">
+                    <button className="certify-button">차량 인증 신청하기</button>
+                    <button className="repair-button" onClick={() => setIsModalOpen(true)}>
+                        수리 기록 확인하기
+                    </button>
+                    <CarRepairModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+                </div>
             </div>
         </div>
     );

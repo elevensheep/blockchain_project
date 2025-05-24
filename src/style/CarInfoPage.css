@@ -72,19 +72,28 @@
     font-size: 1.05rem;
 }
 
-.certify-button {
-    align-self: center;
-    padding: 1rem 2.5rem;
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.certify-button,
+.repair-button {
     background-color: #003d99;
     color: white;
+    padding: 1rem 2.5rem;
     font-size: 1.1rem;
-    width: 50%;
+    width: 45%;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.certify-button:hover {
+.certify-button:hover,
+.repair-button:hover {
     background-color: #002a70;
 }
