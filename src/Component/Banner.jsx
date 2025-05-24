@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "../Style/Banner.css";
@@ -8,6 +9,35 @@ const images = [
   require("../Image/KakaoTalk_20250523_170150241_02.png"),
   require("../Image/KakaoTalk_20250523_170150241_03.png"),
   require("../Image/KakaoTalk_20250523_170150241_04.png"),
+=======
+import React, { useState } from "react";
+import Avante from "../Image/Avente.png";
+import K5 from "../Image/K5.png";
+import Spa from "../Image/Spark.jpg";
+import Spo from "../Image/Spo.jpg";
+import "../Style/Banner.css";
+
+const carList = [
+  {
+    model: "김주은의 무보험 아반떼(CN7)",
+    price: "1,200만원",
+    image: Avante,
+  },
+  {
+    model: "이희재씨가 타던 기아 더 뉴 K5 2세대",
+    price: "1,500만원",
+    image: K5,
+  },
+  {
+    model: "김도현을 뒤에서 쳐버린 김성수의 더 뉴 스파크",
+    price: "800만원",
+    image: Spa,
+  },
+  {
+    model: "김성수가 뒤에서 쳐버린 김도현의 스포티지",
+    price: "1000만원",
+    image: Spo,
+  },
 ];
 
 function Banner() {
@@ -65,12 +95,7 @@ function Banner() {
           className="banner-img"
         />
       </div>
-
-      <button className="nav-arrow right" onClick={handleNext}>
-        <FiChevronRight />
-      </button>
-    </div>
-  );
-}
+   </div>
+)
 
 export default Banner;
