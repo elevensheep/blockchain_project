@@ -1,0 +1,53 @@
+.repair-page-bg {
+    width: 100%;
+    background-color: #1C1E29;
+    color: white;
+    padding: 4rem 0;
+}
+
+.repair-info-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.repair-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.repair-title h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.repair-title p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.repair-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.repair-section li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: #1C1E29;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    border: 1px solid #2c2e3e;
+}
+
+.part-name {
+    font-weight: bold;
+}
+
+.repair-status {
+    color: #a0e0ff;
+}

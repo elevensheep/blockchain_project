@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from 'react-router-dom';
 import "../Style/CarInfoPage.css";
 import carImage from "../Image/test-car.png";
 
@@ -60,7 +60,14 @@ const CarInfoPage = () => {
                     </ul>
                 </div>
 
-                <button className="certify-button">차량 인증 신청하기</button>
+                <div className="button-group">
+                    <button className="certify-button">차량 인증 신청하기</button>
+                    <button className="repair-button">
+                        <Link to="/repair" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            수리 기록 확인하기
+                        </Link>
+                    </button>
+                </div>
             </div>
         </div>
     );

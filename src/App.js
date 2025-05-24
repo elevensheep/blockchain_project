@@ -5,18 +5,21 @@ import Header from "./Component/Header";
 import MainPage from './MainPage/MainPage';
 import AddCarPage from './AddCarPage/AddCarPage';
 import CarInfoPage from './CarInfoPage/CarInfoPage';
+import CarRepairPage from './CarRepairPage/CarRepairPage';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/addcar" element={<AddCarPage />} />
           <Route path="/carinfo" element={<CarInfoPage />} />
+          <Route path="/repair" element={<CarRepairPage />} />
         </Routes>
       </Router>
     </div>
