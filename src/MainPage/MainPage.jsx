@@ -1,6 +1,5 @@
 import React from "react";
-import "../App.css";
-import Header from "../Component/Header";
+import "../Style/MainPage.css";
 import Banner from "../Component/Banner";
 import SearchBar from '../Component/SearchBar';
 import carLoanImg from "../Image/car-loan.png";
@@ -15,13 +14,7 @@ import partner4 from "../Image/partner4.png";
 const MainPage = () => {
     return (
         <div className="main-page">
-            <Header />
-
             <section className="hero">
-                <p className="subtitle">
-                    당신의 다음 이야기<br />새로운 차와 함께 시작됩니다
-                </p>
-
                 <div className="ad-banner">
                     <Banner />
                 </div>

@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.main-page {
+  background: linear-gradient(to top, #1C1E29, #263645);
+  color: white;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box > * {
+  width: 100%;
+  max-width: 900px;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 2.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.car-section {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.car-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.car-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.car-list img {
+  width: 160px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+  text-align: center;
+}
+
+.feature-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.feature-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.partner-section {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.partners {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 5rem;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 6rem;
+  z-index: 2;
+  position: relative;
+}
+
+.partners img {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer {
+  background-color: #252729;
+  color: #aaa;
+  text-align: center;
+  padding: 2rem 0 2rem 0;
+  margin-top: -1rem;
+  z-index: 1;
+  position: relative;
+}
+
+.footer-info {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
