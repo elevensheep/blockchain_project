@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import GenesisLogo from '../Image/genesisLogo.jpg';
+import { FaCarSide } from 'react-icons/fa'; 
 import '../Style/Sign.css';
 
 const Login = () => {
@@ -32,9 +32,10 @@ const Login = () => {
           <button type="button" className="wallet-btn" onClick={handleWalletConnect}>
             NFT Wallet Connection
           </button> */}
-          <button type="button" onClick={handleLogin} className="logo-button">
-            <img src={GenesisLogo} alt="Genesis Logo" />
-          </button>
+          <button className="easy-login-btn" onClick={handleLogin}>
+                <FaCarSide className="easy-login-icon" />
+                <span>간편 로그인</span>
+          </button>          
           <button type="submit">로그인</button>
         </form>
 
