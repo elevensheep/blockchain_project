@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Style/Sign.css';
-
+import GenesisLogo from '../Image/genesisLogo.jpg'
 const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // 로그인 처리 로직
   };
 
-  const handleWalletConnect = () => {
-    alert('지갑 연결 기능은 아직 구현되지 않았습니다.');
+  const handleLogin = () => {
+    window.location.href = "http://localhost:5000/login";
   };
+  // const handleWalletConnect = () => {
+  //   alert('지갑 연결 기능은 아직 구현되지 않았습니다.');
+  // };
 
   return (
     <div className="sign-page">
@@ -25,11 +28,11 @@ const Login = () => {
 
           <div className="info-text">비밀번호를 잊어버렸나요?</div>
 
-          <label htmlFor="wallet">Connect Wallet Example</label>
+          {/* <label htmlFor="wallet">Connect Wallet Example</label>
           <button type="button" className="wallet-btn" onClick={handleWalletConnect}>
             NFT Wallet Connection
-          </button>
-
+          </button> */}
+          <button onClick={handleLogin}><img src='../Image/genesisLogo.jpg'/></button>
           <button type="submit">로그인</button>
         </form>
 
