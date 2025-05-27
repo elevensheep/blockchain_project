@@ -13,7 +13,6 @@
   max-width: 550px;
   border-radius: 12px;
   box-sizing: border-box;
-  backdrop-filter: blur(8px);
 }
 
 .form {
@@ -58,6 +57,23 @@ label {
   width: 17.6px;
   height: 17.6px;
   margin-top: 4px;
+}
+
+.logo-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 11px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-button img {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
 }
 
 button {

@@ -32,7 +32,9 @@ const Login = () => {
           <button type="button" className="wallet-btn" onClick={handleWalletConnect}>
             NFT Wallet Connection
           </button> */}
-          <button onClick={handleLogin}><img src='../Image/genesisLogo.jpg'/></button>
+          <button type="button" onClick={handleLogin} className="logo-button">
+            <img src={GenesisLogo} alt="Genesis Logo" />
+          </button>
           <button type="submit">로그인</button>
         </form>
 
