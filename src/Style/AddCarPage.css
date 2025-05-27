@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 76.3vh;
+    min-height: 72.8vh;
     color: white;
     font-family: 'Noto Sans KR', sans-serif;
     padding: 5rem 2rem 2rem;
@@ -66,7 +66,7 @@
 }
 
 .submit-button {
-    background-color: #003d99;
+    background-color: #003D99;
     color: white;
     font-size: 1.2rem;
     width: 50%;
@@ -78,5 +78,5 @@
 }
 
 .submit-button:hover {
-    background-color: #002a70;
+    background-color: #002A70;
 }

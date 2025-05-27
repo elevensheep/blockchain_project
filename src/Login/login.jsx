@@ -1,7 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import GenesisLogo from '../Image/genesisLogo.jpg';
 import '../Style/Sign.css';
-import GenesisLogo from '../Image/genesisLogo.jpg'
+
 const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,5 +1,4 @@
-// src/pages/ProfilePage.jsx
-import React from "react";
+import "../Style/MyPage.css";
 
 function MyPage() {
     const access_token = sessionStorage.getItem("access_token");
@@ -26,13 +25,39 @@ function MyPage() {
             });
     };
 
+    // Dummy user data
+    const userInfo = {
+        id: "user_123456",
+        email: "user@example.com",
+        name: "홍길동",
+        mobileNum: "010-1234-5678",
+        birthdate: "1990-01-01",
+        lang: "ko",
+        social: true
+    };
+
     return (
-        <div>
+        <div className="profile-page">
             <h2>OAuth 테스트 - 토큰 관리</h2>
-            <p><strong>Access Token:</strong> {access_token}</p>
-            <p><strong>Refresh Token:</strong> {refresh_token}</p>
-            <button onClick={handleRefresh}>🔁 토큰 갱신</button>
-            <button onClick={handleDelete}>🚪 토큰 삭제</button>
+            <div className="token-box">
+                <p><strong>Access Token:</strong> {access_token}</p>
+                <p><strong>Refresh Token:</strong> {refresh_token}</p>
+                <div className="token-button-group">
+                    <button className="token-refresh-button" onClick={handleRefresh}>🔁 토큰 갱신</button>
+                    <button className="token-delete-button" onClick={handleDelete}>🚪 토큰 삭제</button>
+                </div>
+            </div>
+
+            <h3>👤 사용자 정보</h3>
+            <div className="user-info">
+                <p><strong>ID:</strong> {userInfo.id}</p>
+                <p><strong>이메일:</strong> {userInfo.email}</p>
+                <p><strong>이름:</strong> {userInfo.name}</p>
+                <p><strong>휴대폰번호:</strong> {userInfo.mobileNum}</p>
+                <p><strong>생년월일:</strong> {userInfo.birthdate}</p>
+                <p><strong>언어:</strong> {userInfo.lang}</p>
+                <p><strong>소셜 로그인:</strong> {userInfo.social ? "예" : "아니오"}</p>
+            </div>
         </div>
     );
 }

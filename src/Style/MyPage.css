@@ -1,0 +1,51 @@
+.profile-page {
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    background-color: #1C1E29;
+    color: white;
+}
+
+.token-box,
+.user-info {
+    background-color: #2A2D3E;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.token-box p,
+.user-info p {
+    margin: 0.75rem 0;
+    font-size: 1.05rem;
+    color: #ddd;
+}
+
+.user-info p strong {
+    color: #fff;
+}
+
+.token-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.token-refresh-button,
+.token-delete-button {
+    background-color: #003D99;
+    color: white;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    width: 45%;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.token-refresh-button:hover,
+.token-delete-button:hover {
+    background-color: #002A70;
+}
