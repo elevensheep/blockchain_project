@@ -59,23 +59,6 @@ label {
   margin-top: 4px;
 }
 
-.logo-button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin-top: 11px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logo-button img {
-  width: 120px;
-  height: auto;
-  object-fit: contain;
-}
-
 button {
   width: 100%;
   padding: 13.2px;
@@ -88,26 +71,42 @@ button {
   margin-top: 11px;
 }
 
+.easy-login-group {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
 .easy-login-btn {
   all: unset;
-  width: 95%;
+  flex: 1;
   padding: 13.2px;
-  background-color: white;
-  color: #333949;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 5px;
-  font-size: 1.1em;
   cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
 }
 
-.easy-login-icon {
-  font-size: 1.3em;
+.brand-logo {
+  width: 24px;
+  height: auto;
 }
 
+.easy-login-btn.kia {
+  background-color: #05141f;
+}
+
+.easy-login-btn.genesis {
+  background-color: #000000;
+}
+
+.easy-login-btn.bluelink {
+  background-color: #002e6b;
+}
 
 .wallet-btn {
   background-color: white;
