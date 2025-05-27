@@ -1,5 +1,5 @@
 .sign-page {
-  min-height: 76.3vh;
+  min-height: 72.8vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -13,7 +13,6 @@
   max-width: 550px;
   border-radius: 12px;
   box-sizing: border-box;
-  backdrop-filter: blur(8px);
 }
 
 .form {
@@ -60,6 +59,23 @@ label {
   margin-top: 4px;
 }
 
+.logo-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 11px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-button img {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
 button {
   width: 100%;
   padding: 13.2px;
@@ -71,6 +87,27 @@ button {
   cursor: pointer;
   margin-top: 11px;
 }
+
+.easy-login-btn {
+  all: unset;
+  width: 95%;
+  padding: 13.2px;
+  background-color: white;
+  color: #333949;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.easy-login-icon {
+  font-size: 1.3em;
+}
+
 
 .wallet-btn {
   background-color: white;

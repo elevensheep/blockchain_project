@@ -1,7 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaCarSide } from 'react-icons/fa'; 
 import '../Style/Sign.css';
-import GenesisLogo from '../Image/genesisLogo.jpg'
+
 const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +32,10 @@ const Login = () => {
           <button type="button" className="wallet-btn" onClick={handleWalletConnect}>
             NFT Wallet Connection
           </button> */}
-          <button onClick={handleLogin}><img src='../Image/genesisLogo.jpg'/></button>
+          <button className="easy-login-btn" onClick={handleLogin}>
+                <FaCarSide className="easy-login-icon" />
+                <span>간편 로그인</span>
+          </button>          
           <button type="submit">로그인</button>
         </form>
 
