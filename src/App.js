@@ -4,6 +4,7 @@ import Footer from './Component/Footer';
 import MainPage from './MainPage/MainPage';
 import Login from './Login/login';
 import Signup from './Login/signup';
+import ListPage from './ListPage/ListPage';
 import AddCarPage from './AddCarPage/AddCarPage';
 import CarInfoPage from './CarInfoPage/CarInfoPage';
 import RedirectPage from './Component/RedirectPage';
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path='/list' element={<ListPage />} />
           <Route path="/addcar" element={<AddCarPage />} />
           <Route path="/carinfo" element={<CarInfoPage />} />
           <Route path="/redirect" element={<RedirectPage />} />

@@ -3,8 +3,9 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "../Style/Banner.css";
 
 const images = [
+  require("../Image/Bannerimage.png"),
   // require("../Image/Bannerimage1.png"),
-  require("../Image/Bannerimage2.png"),
+  // require("../Image/Bannerimage2.png"),
   // require("../Image/Bannerimage3.png"),
   // require("../Image/Bannerimage4.png"),
   // require("../Image/Bannerimage5.png"),
@@ -53,18 +54,22 @@ function Banner() {
         <FiChevronLeft />
       </button>
 
-      <div
-        className="banner-wrapper"
+      <div className="banner-wrapper"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
         {images[current] && (
-          <img
-            src={images[current]}
-            alt={`slide-${current}`}
-            className="banner-img"
-         />
+          <>
+            <img
+              src={images[current]}
+              alt={`slide-${current}`}
+              className="banner-img"
+            />
+            <div className="banner-text">
+              <p>당신의 다음 이야기<br />새로운 차와 함께 시작됩니다</p>
+            </div>
+          </>
         )}
       </div>
 
