@@ -12,7 +12,7 @@ function MyPage() {
     const access_token = sessionStorage.getItem("access_token");
     const refresh_token = sessionStorage.getItem("refresh_token");
 
-    // 🔁 토큰 갱신
+    // 토큰 갱신
     const handleRefresh = async () => {
         try {
             const res = await fetch(`http://localhost:5000/refresh?refresh_token=${refresh_token}`);
@@ -32,7 +32,7 @@ function MyPage() {
         }
     };
 
-    // 🚪 로그아웃 및 토큰 삭제
+    // 로그아웃 및 토큰 삭제
     const handleDelete = async () => {
         try {
             const res = await fetch(`http://localhost:5000/delete?access_token=${access_token}`);
@@ -49,7 +49,7 @@ function MyPage() {
         }
     };
 
-    // 👤 프로필 가져오기
+    // 프로필 가져오기
     useEffect(() => {
         const fetchProfile = async () => {
             if (!access_token) {
@@ -82,7 +82,7 @@ function MyPage() {
         fetchProfile();
     }, [access_token]);
 
-    // 🚗 차량 목록 가져오기
+    // 차량 목록 가져오기
     useEffect(() => {
         const fetchMyCarList = async () => {
             if (!access_token) return;
@@ -103,7 +103,7 @@ function MyPage() {
                 const json = await res.json();
                 setCarList(json);
             } catch (err) {
-                console.error("🚨 차량 목록 요청 오류:", err);
+                console.error("차량 목록 요청 오류:", err);
                 setCarError(err.message);
             }
         };
@@ -113,42 +113,59 @@ function MyPage() {
 
     return (
         <div className="profile-page">
-            <h2>OAuth 테스트 - 토큰 관리</h2>
+            <div className="page-container">
+                <h1 className="page-title">마이페이지</h1>
 
-            <div className="token-box">
-                <p><strong>Access Token:</strong> {access_token}</p>
-                <p><strong>Refresh Token:</strong> {refresh_token}</p>
-                <div className="token-button-group">
-                    <button className="token-refresh-button" onClick={handleRefresh}>🔁 토큰 갱신</button>
-                    <button className="token-delete-button" onClick={handleDelete}>🚪 토큰 삭제</button>
+                <div className="section">
+                    <h3 className="section-title">사용자 정보</h3>
+                    <div className="info-card">
+                        {error ? (
+                            <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+                        ) : profile ? (
+                            <>
+                                <p><strong>이메일:</strong> {profile.email}</p>
+                                <p><strong>이름:</strong> {profile.name}</p>
+                                <p><strong>휴대폰번호:</strong> {profile.mobileNum}</p>
+                                <p><strong>생년월일:</strong> {profile.birthdate}</p>
+                                <p><strong>언어:</strong> {profile.lang}</p>
+                                <p><strong>소셜 로그인:</strong> {profile.social ? "예" : "아니오"}</p>
+                            </>
+                        ) : (
+                            <p className="car-promo-text">로딩 중...</p>
+                        )}
+                    </div>
+                </div>
+
+                <div className="section">
+                    <h3 className="section-title">내 차 정보</h3>
+                    <div className="info-card">
+                        {carError ? (
+                            <p style={{ color: "red", textAlign: "center" }}>{carError}</p>
+                        ) : carList && carList.cars.length > 0 ? (
+                            carList.cars.map((car) => (
+                                <div className="car-item" key={car.carId}>
+                                    <p><strong>차량 이름:</strong> {car.carName}</p>
+                                    <p><strong>차량 타입:</strong> {car.carType}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="car-promo-text">믿을 수 있는 중고차를 체인카에서 만나보세요!</p>
+                        )}
+                    </div>
+                </div>
+
+                <div className="section">
+                    <h3 className="section-title">토큰 관리</h3>
+                    <div className="info-card">
+                        <p><strong>Access Token:</strong> {access_token}</p>
+                        <p><strong>Refresh Token:</strong> {refresh_token}</p>
+                        <div className="token-button-group">
+                            <button className="token-refresh-button" onClick={handleRefresh}>🔁 토큰 갱신</button>
+                            <button className="token-delete-button" onClick={handleDelete}>🚪 로그아웃</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <h3>👤 사용자 정보</h3>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {profile ? (
-                <div className="user-info">
-                    <p><strong>ID:</strong> {profile.id}</p>
-                    <p><strong>이메일:</strong> {profile.email}</p>
-                    <p><strong>이름:</strong> {profile.name}</p>
-                    <p><strong>휴대폰번호:</strong> {profile.mobileNum}</p>
-                    <p><strong>생년월일:</strong> {profile.birthdate}</p>
-                    <p><strong>언어:</strong> {profile.lang}</p>
-                    <p><strong>소셜 로그인:</strong> {profile.social ? "예" : "아니오"}</p>
-                </div>
-            ) : !error ? (
-                <p>로딩 중...</p>
-            ) : null}
-
-            <h3>🚗 내 차량 목록</h3>
-            {carError && <p style={{ color: "red" }}>{carError}</p>}
-            {carList ? (
-                <pre style={{ whiteSpace: "pre-wrap", background: "#000000", padding: "10px" }}>
-                    {JSON.stringify(carList, null, 2)}
-                </pre>
-            ) : (
-                !carError && <p>차량 정보 불러오는 중...</p>
-            )}
         </div>
     );
 }

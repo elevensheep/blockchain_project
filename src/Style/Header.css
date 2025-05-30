@@ -42,7 +42,8 @@
   white-space: nowrap;
 }
 
-.login-signup button {
+.login-signup button,
+.user-btn {
   background: #252729;
   color: white;
   border: none;
@@ -50,13 +51,18 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-family: 'Noto Sans KR', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-btn {
+  background-color: #3b3d40;
 }
 
 .login-area {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.3rem;
+  gap: 1rem;
 }
 
 .top-menu {
@@ -67,20 +73,12 @@
   color: white;
 }
 
-.logout-text {
-  cursor: pointer;
-}
-
 .menu-link {
   text-decoration: none;
   color: white;
 }
 
-.user-icon-alone {
-  cursor: pointer;
-}
-
 .user-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
 }

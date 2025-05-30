@@ -1,51 +1,122 @@
 .profile-page {
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    background-color: #1C1E29;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1.5rem 2rem;
     color: white;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-.token-box,
-.user-info {
-    background-color: #2A2D3E;
-    border-radius: 10px;
-    padding: 2rem;
-    margin-bottom: 2rem;
+.page-container {
+    width: 100%;
+    max-width: 850px;
+    box-sizing: border-box;
 }
 
-.token-box p,
-.user-info p {
-    margin: 0.75rem 0;
-    font-size: 1.05rem;
-    color: #ddd;
-}
-
-.user-info p strong {
+.page-title {
+    margin-bottom: 2.5rem;
     color: #fff;
+    padding-left: 0.5rem;
+    font-size: 2.25rem;
+    text-align: left;
+}
+
+.section {
+    margin-bottom: 2.5rem;
+    padding: 0 0.5rem;
+}
+
+.section-title {
+    font-family: 'BMHANNAPro';
+    font-weight: normal;
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.info-card {
+    background-color: #2A2D3E;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #ddd;
+    text-align: left;
+}
+
+.info-card p {
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.car-promo-text {
+    font-family: 'BMHANNAPro';
+    font-weight: normal;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.car-item {
+    background-color: #3A3D4E;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    color: #ccc;
+}
+
+.car-item p {
+    margin: 0.5rem 0;
 }
 
 .token-button-group {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 1.5rem;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
 .token-refresh-button,
 .token-delete-button {
-    background-color: #003D99;
+    background-color: #0052CC;
     color: white;
-    padding: 0.9rem 2rem;
+    padding: 0.8rem 2rem;
     font-size: 1rem;
-    width: 45%;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
+    flex: 1;
+    min-width: 120px;
+    max-width: 48%;
 }
 
 .token-refresh-button:hover,
 .token-delete-button:hover {
-    background-color: #002A70;
+    background-color: #003D99;
+}
+
+@media (max-width: 768px) {
+    .token-button-group {
+        flex-direction: column;
+    }
+
+    .token-refresh-button,
+    .token-delete-button {
+        width: 100%;
+    }
+
+    .info-card {
+        padding: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        text-align: center;
+    }
 }
