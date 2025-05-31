@@ -46,24 +46,26 @@ const MainPage = () => {
                     <SearchBar />
                 </div>
 
-                <div
-                    className="car-list-header"
-                    onClick={() => navigate('/list')}
-                >
-                    <h2>차량리스트 더보기 <FaChevronRight className="arrow-icon" /></h2>
-                </div>
-                <div className="car-list">
-                    {cars.map((car, index) => (
-                        <div className="car-card" key={index}>
-                            <div className="badges">
-                                <span className="badge diagnose">진단 +</span>
-                                <span className="badge trust">믿고</span>
+                <div className="car-list-container">
+                    <div
+                        className="car-list-header"
+                        onClick={() => navigate('/list')}
+                    >
+                        <h2>차량리스트 더보기 <FaChevronRight className="arrow-icon" /></h2>
+                    </div>
+                    <div className="car-list">
+                        {cars.map((car, index) => (
+                            <div className="car-card" key={index}>
+                                <div className="badges">
+                                    <span className="badge diagnose">진단 +</span>
+                                    <span className="badge trust">믿고</span>
+                                </div>
+                                <img src={car.image} alt={car.name} />
+                                <div className="car-name">{car.name}</div>
+                                <div className="car-price">{car.price}</div>
                             </div>
-                            <img src={car.image} alt={car.name} className="car-image" />
-                            <div className="car-name">{car.name}</div>
-                            <div className="car-price">{car.price}</div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
 

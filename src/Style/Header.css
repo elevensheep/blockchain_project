@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #191B1F;
+  background-color: #101820;
   color: white;
 }
 
@@ -42,21 +42,27 @@
   white-space: nowrap;
 }
 
-.login-signup button {
-  background: #252729;
+.login-signup button,
+.user-btn {
+  background: #25282A;
   color: white;
   border: none;
   border-radius: 6px;
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-family: 'Noto Sans KR', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-btn {
+  background-color: #2C3539;
 }
 
 .login-area {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.3rem;
+  gap: 1rem;
 }
 
 .top-menu {
@@ -67,20 +73,12 @@
   color: white;
 }
 
-.logout-text {
-  cursor: pointer;
-}
-
 .menu-link {
   text-decoration: none;
   color: white;
 }
 
-.user-icon-alone {
-  cursor: pointer;
-}
-
 .user-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
 }

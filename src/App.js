@@ -10,7 +10,7 @@ import CarInfoPage from './CarInfoPage/CarInfoPage';
 import RedirectPage from './Component/RedirectPage';
 import MyPage from './MyPage/MyPage';
 import './App.css';
-import MyCarListTest from './Component/MyCarListTest';
+//import MyCarListTest from './Component/MyCarListTest';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <Route path="/carinfo" element={<CarInfoPage />} />
           <Route path="/redirect" element={<RedirectPage />} />
           <Route path="/mypage" element={<MyPage />} />
-          <Route path="/test" element={<MyCarListTest />} />
+          {/* <Route path="/test" element={<MyCarListTest />} /> */}
         </Routes>
         <Footer />
       </Router>
