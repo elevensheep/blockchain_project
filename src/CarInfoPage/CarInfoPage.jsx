@@ -17,7 +17,7 @@ const CarInfoPage = () => {
     //         confirmButtonText: '확인',
     //         confirmButtonColor: '#0072CE',
     //         background: '#101820',
-    //         color: '#ffffff',
+    //         color: 'white',
     //         customClass: {
     //             popup: 'swal2-custom-popup'
     //         }

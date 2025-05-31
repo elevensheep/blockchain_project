@@ -14,7 +14,7 @@
 
 .page-title {
     margin-bottom: 2.5rem;
-    color: #fff;
+    color: white;
     padding-left: 0.5rem;
     font-size: 2.25rem;
     text-align: left;
@@ -31,11 +31,11 @@
     font-size: 1.5rem;
     text-align: left;
     margin-bottom: 1rem;
-    color: #fff;
+    color: white;
 }
 
 .info-card {
-    background-color: #1F2A44;
+    background-color: #131E29;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -55,11 +55,11 @@
     text-align: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    color: #fff;
+    color: white;
 }
 
 .car-item {
-    background-color: #2C3539;
+    background-color: #25282A;
     padding: 1rem 1.5rem;
     border-radius: 10px;
     margin-bottom: 1rem;
@@ -86,7 +86,6 @@
     font-size: 1rem;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
     flex: 1;
     min-width: 120px;

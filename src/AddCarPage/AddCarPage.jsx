@@ -9,15 +9,13 @@ const AddCarPage = () => {
                 <h1 className="title">내 차량 팔기를 시작합니다.</h1>
                 <form className="car-form">
                     <div className="inline-field">
-                        <label htmlFor="vin">차량 일련번호</label>
+                        <label htmlFor="vin">차대번호</label>
                         <input type="text" id="vin" className="input" placeholder="예: 12가3456" />
-                        <span className="suffix">이며,</span>
                     </div>
 
                     <div className="inline-field">
                         <label htmlFor="owner">소유자명</label>
                         <input type="text" id="owner" className="input" placeholder="예: 홍길동" />
-                        <span className="suffix">입니다.</span>
                     </div>
 
                     <p className="note">
@@ -29,6 +27,11 @@ const AddCarPage = () => {
                         <button type="submit" className="submit-button">
                             <Link to="/carinfo" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 내 차량 조회하기
+                            </Link>
+                        </button>
+                        <button type="button" className="submit-button">
+                            <Link to="/sell" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                신규등록하기
                             </Link>
                         </button>
                     </div>

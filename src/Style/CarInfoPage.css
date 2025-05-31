@@ -89,11 +89,4 @@
     width: 45%;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.certify-button:hover,
-.repair-button:hover {
-    background-color: #002D72;
 }

@@ -40,6 +40,15 @@ h3 {
   text-align: center;
 }
 
+button {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #002D72;
+}
+
 .swal2-custom-popup {
   border-radius: 20px;
 }
