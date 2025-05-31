@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import Swal from 'sweetalert2';
 import "../Style/CarInfoPage.css";
 import carImage from "../Image/test-car.png";
@@ -7,7 +7,7 @@ import CarRepairModal from '../CarRepairModal/CarRepairModal';
 
 const CarInfoPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // const handleCertifyClick = () => {
     //     Swal.fire({
@@ -15,8 +15,8 @@ const CarInfoPage = () => {
     //         title: '',
     //         text: '인증이 완료되었습니다.',
     //         confirmButtonText: '확인',
-    //         confirmButtonColor: '#003D99',
-    //         background: '#1C1E29',
+    //         confirmButtonColor: '#0072CE',
+    //         background: '#101820',
     //         color: '#ffffff',
     //         customClass: {
     //             popup: 'swal2-custom-popup'
@@ -87,7 +87,7 @@ const CarInfoPage = () => {
 
                 <div className="button-group">
                     {/* <button className="certify-button" onClick={handleCertifyClick}> */}
-                        차량 인증 신청하기
+                    차량 인증 신청하기
                     {/* </button> */}
                     <button className="repair-button" onClick={() => setIsModalOpen(true)}>
                         수리 기록 확인하기

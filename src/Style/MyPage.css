@@ -35,11 +35,11 @@
 }
 
 .info-card {
-    background-color: #2A2D3E;
+    background-color: #1F2A44;
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #CDCDCD;
     text-align: left;
 }
 
@@ -59,11 +59,11 @@
 }
 
 .car-item {
-    background-color: #3A3D4E;
+    background-color: #2C3539;
     padding: 1rem 1.5rem;
     border-radius: 10px;
     margin-bottom: 1rem;
-    color: #ccc;
+    color: #CDCDCD;
 }
 
 .car-item p {
@@ -80,7 +80,7 @@
 
 .token-refresh-button,
 .token-delete-button {
-    background-color: #0052CC;
+    background-color: #0072CE;
     color: white;
     padding: 0.8rem 2rem;
     font-size: 1rem;
@@ -95,7 +95,7 @@
 
 .token-refresh-button:hover,
 .token-delete-button:hover {
-    background-color: #003D99;
+    background-color: #0072CE;
 }
 
 @media (max-width: 768px) {

@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #191B1F;
+  background-color: #101820;
   color: white;
 }
 
@@ -44,7 +44,7 @@
 
 .login-signup button,
 .user-btn {
-  background: #252729;
+  background: #25282A;
   color: white;
   border: none;
   border-radius: 6px;
@@ -57,7 +57,7 @@
 }
 
 .signup-btn {
-  background-color: #3b3d40;
+  background-color: #2C3539;
 }
 
 .login-area {

@@ -60,7 +60,7 @@ const MainPage = () => {
                                     <span className="badge diagnose">진단 +</span>
                                     <span className="badge trust">믿고</span>
                                 </div>
-                                <img src={car.image} alt={car.name} className="car-image" />
+                                <img src={car.image} alt={car.name} />
                                 <div className="car-name">{car.name}</div>
                                 <div className="car-price">{car.price}</div>
                             </div>
