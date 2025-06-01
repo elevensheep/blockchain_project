@@ -6,6 +6,7 @@ import Login from './Login/login';
 import Signup from './Login/signup';
 import AddCarPage from './AddCarPage/AddCarPage';
 import CarInfoPage from './CarInfoPage/CarInfoPage';
+import ConnectWallet from './Component/ConnectWallet' 
 import './App.css';
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+
+        <ConnectWallet />
+
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
