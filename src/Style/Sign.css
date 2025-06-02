@@ -46,7 +46,7 @@ label {
 .checkbox-container {
   display: flex;
   align-items: flex-start;
-  gap: 9px;
+  gap: 0.5rem;
   font-size: 0.825em;
   margin: 11px 0;
   line-height: 1.54em;
@@ -62,18 +62,17 @@ label {
 button {
   width: 100%;
   padding: 13.2px;
-  background-color: #373A36;
+  background-color: #0072CE;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 1.1em;
-  cursor: pointer;
   margin-top: 11px;
 }
 
 .easy-login-group {
   display: flex;
-  gap: 10px;
+  gap: 0.5rem;
   justify-content: space-between;
 }
 
@@ -83,11 +82,10 @@ button {
   padding: 13.2px;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 0.5rem;
   text-align: center;
 }
 
@@ -101,7 +99,7 @@ button {
 }
 
 .easy-login-btn.genesis {
-  background-color: #000000;
+  background-color: black;
 }
 
 .easy-login-btn.bluelink {

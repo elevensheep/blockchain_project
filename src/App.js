@@ -6,6 +6,7 @@ import Login from './Login/login';
 import Signup from './Login/signup';
 import ListPage from './ListPage/ListPage';
 import AddCarPage from './AddCarPage/AddCarPage';
+import CarSellPage from './CarSellPage/CarSellPage';
 import CarInfoPage from './CarInfoPage/CarInfoPage';
 import RedirectPage from './Component/RedirectPage';
 import MyPage from './MyPage/MyPage';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path='/list' element={<ListPage />} />
           <Route path="/addcar" element={<AddCarPage />} />
+          <Route path="/sell" element={<CarSellPage />} />
           <Route path="/carinfo" element={<CarInfoPage />} />
           <Route path="/redirect" element={<RedirectPage />} />
           <Route path="/mypage" element={<MyPage />} />

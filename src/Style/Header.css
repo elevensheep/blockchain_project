@@ -49,7 +49,6 @@
   border: none;
   border-radius: 6px;
   padding: 0.5rem 1rem;
-  cursor: pointer;
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   align-items: center;
@@ -57,7 +56,7 @@
 }
 
 .signup-btn {
-  background-color: #2C3539;
+  background-color: #25282A;
 }
 
 .login-area {

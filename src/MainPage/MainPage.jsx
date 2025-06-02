@@ -88,6 +88,8 @@ const MainPage = () => {
                 </div>
             </section>
 
+            <div className="section-divider" />
+
             <section className="partner-section">
                 <div className="partners">
                     <img src={partner1} alt="삼성화재" />

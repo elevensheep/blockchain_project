@@ -1,7 +1,8 @@
-import "../Style/ListPage.css";
-import SearchBar from '../Component/SearchBar';
+import { useState } from 'react';
 import { FiRotateCcw } from "react-icons/fi"; // 초기화 아이콘
+import SearchBar from '../Component/SearchBar';
 import mohave from "../Image/kia_mohave_black_2023.png";
+import "../Style/ListPage.css";
 
 const carData = new Array(12).fill({
   name: "기아 모하비 더 마스터 디젤 3.0 4WD 7인승 마스터즈",
@@ -13,6 +14,10 @@ const handleReset = () => {
 };
 
 const ListPage = () => {
+  const [selectedPrice, setSelectedPrice] = useState(null);
+  const [minMileage, setMinMileage] = useState(0);
+  const [maxMileage, setMaxMileage] = useState(200000);
+
   return (
     <div className="list-page">
       <div className="search-container">
@@ -22,7 +27,6 @@ const ListPage = () => {
       <div className="content-section">
         <div className="filter-wrapper">
           <div className="filter-header">
-            <h3 className="filter-title">필터</h3>
             <div className="reset-wrapper" onClick={handleReset}>
               <span className="reset-label">초기화</span>
               <button className="reset-button" title="초기화">
@@ -53,9 +57,18 @@ const ListPage = () => {
               <h4>가격</h4>
               <div className="price-button-grid">
                 {[1000, 2000, 3000, 4000, 5000, 6000, 7000, '8000 이상'].map((v, i) => {
-                  const label = typeof v === 'number' ? `${v}만원` : v.replace(' 이상', '만원 이상');
+                  const value = typeof v === 'number' ? v : 8000;
+                  const label = typeof v === 'number' ? `${v}만원` : `${value}만원 이상`;
+                  const isSelected = selectedPrice === value;
+
                   return (
-                    <button key={i} className="price-btn">{label}</button>
+                    <button
+                      key={i}
+                      className={`price-btn ${isSelected ? 'selected' : ''}`}
+                      onClick={() => setSelectedPrice(value)}
+                    >
+                      {label}
+                    </button>
                   );
                 })}
               </div>
@@ -81,22 +94,52 @@ const ListPage = () => {
 
             <div className="filter-group">
               <h4>주행거리</h4>
-              <input type="range" min="0" max="200000" defaultValue="0" />
-              <select>
-                <option>km</option>
-              </select>
-              <select>
-                <option>km</option>
-              </select>
+
+              <input
+                type="range"
+                min="0"
+                max="200000"
+                value={maxMileage}
+                onChange={(e) => setMaxMileage(Number(e.target.value))}
+              />
+
+              <div className="price-inputs">
+                <div className="price-input-row">
+                  <input
+                    type="number"
+                    className="price-input"
+                    placeholder="최소"
+                    value={minMileage}
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+                      setMinMileage(value > maxMileage ? maxMileage : value);
+                    }}
+                  />
+                  <span className="price-hint">km부터</span>
+                </div>
+                <div className="price-input-row">
+                  <input
+                    type="number"
+                    className="price-input"
+                    placeholder="최대"
+                    value={maxMileage}
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+                      setMaxMileage(value < minMileage ? minMileage : value);
+                    }}
+                  />
+                  <span className="price-hint">km까지</span>
+                </div>
+              </div>
             </div>
 
             <div className="filter-group">
               <h4>연식</h4>
               <select>
-                <option>2018</option>
-              </select>
-              <select>
-                <option>2019</option>
+                {Array.from({ length: new Date().getFullYear() + 1 - 2015 + 1 }, (_, i) => {
+                  const year = 2015 + i;
+                  return <option key={year}>{year}</option>;
+                })}
               </select>
             </div>
 

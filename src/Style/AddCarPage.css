@@ -48,7 +48,7 @@
     color: white;
 }
 
-.inline-field .suffix {
+.inline-field {
     margin-left: 0.8rem;
     font-size: 1.1rem;
 }
@@ -61,6 +61,7 @@
 
 .button-container {
     display: flex;
+    gap: 0.5rem;
     justify-content: center;
     margin-top: 2rem;
 }
@@ -73,10 +74,4 @@
     padding: 1rem;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.submit-button:hover {
-    background-color: #002D72;
 }
