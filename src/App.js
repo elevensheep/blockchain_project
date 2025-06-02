@@ -8,6 +8,7 @@ import ListPage from './ListPage/ListPage';
 import AddCarPage from './AddCarPage/AddCarPage';
 import CarSellPage from './CarSellPage/CarSellPage';
 import CarInfoPage from './CarInfoPage/CarInfoPage';
+import ConnectWallet from './Component/ConnectWallet' 
 import RedirectPage from './Component/RedirectPage';
 import MyPage from './MyPage/MyPage';
 import './App.css';
@@ -18,6 +19,9 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+
+        <ConnectWallet />
+
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
