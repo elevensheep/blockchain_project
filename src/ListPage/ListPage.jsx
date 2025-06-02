@@ -95,6 +95,11 @@ const ListPage = () => {
             <div className="filter-group">
               <h4>주행거리</h4>
 
+              <div className="mileage-labels">
+                <span>0km</span>
+                <span>{maxMileage.toLocaleString()}km</span>
+              </div>
+
               <input
                 type="range"
                 min="0"
@@ -102,35 +107,6 @@ const ListPage = () => {
                 value={maxMileage}
                 onChange={(e) => setMaxMileage(Number(e.target.value))}
               />
-
-              <div className="price-inputs">
-                <div className="price-input-row">
-                  <input
-                    type="number"
-                    className="price-input"
-                    placeholder="최소"
-                    value={minMileage}
-                    onChange={(e) => {
-                      const value = Number(e.target.value);
-                      setMinMileage(value > maxMileage ? maxMileage : value);
-                    }}
-                  />
-                  <span className="price-hint">km부터</span>
-                </div>
-                <div className="price-input-row">
-                  <input
-                    type="number"
-                    className="price-input"
-                    placeholder="최대"
-                    value={maxMileage}
-                    onChange={(e) => {
-                      const value = Number(e.target.value);
-                      setMaxMileage(value < minMileage ? minMileage : value);
-                    }}
-                  />
-                  <span className="price-hint">km까지</span>
-                </div>
-              </div>
             </div>
 
             <div className="filter-group">
@@ -149,6 +125,12 @@ const ListPage = () => {
               <label><input type="checkbox" /> 디젤</label>
               <label><input type="checkbox" /> 하이브리드</label>
               <label><input type="checkbox" /> 전기</label>
+            </div>
+
+            <div className="button-container">
+              <button className="submit-button" onClick={() => console.log("검색 버튼 클릭됨")}>
+                검색
+              </button>
             </div>
           </aside>
         </div>

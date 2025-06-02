@@ -142,12 +142,14 @@ function MyPage() {
                         {carError ? (
                             <p style={{ color: "red", textAlign: "center" }}>{carError}</p>
                         ) : carList && carList.cars.length > 0 ? (
-                            carList.cars.map((car) => (
-                                <div className="car-item" key={car.carId}>
-                                    <p><strong>차량 이름:</strong> {car.carName}</p>
-                                    <p><strong>차량 타입:</strong> {car.carType}</p>
-                                </div>
-                            ))
+                            <div className="car-list-grid">
+                                {carList.cars.map((car) => (
+                                    <div className="car-card" key={car.carId}>
+                                        <div className="car-name">{car.carName}</div>
+                                        <div className="car-type">{car.carType}</div>
+                                    </div>
+                                ))}
+                            </div>
                         ) : (
                             <p className="car-promo-text">믿을 수 있는 중고차를 체인카에서 만나보세요!</p>
                         )}
