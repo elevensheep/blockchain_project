@@ -1,7 +1,7 @@
 import "../Style/MyPage.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import ConnectWallet from "../Component/ConnectWallet"; // Assuming you have a ConnectWallet component
 function MyPage() {
     const navigate = useNavigate();
     const [profile, setProfile] = useState(null);
@@ -167,6 +167,7 @@ function MyPage() {
                         </div>
                     </div>
                 </div>
+                <ConnectWallet />
             </div>
         </div>
     );
