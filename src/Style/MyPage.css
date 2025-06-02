@@ -35,7 +35,7 @@
 }
 
 .info-card {
-    background-color: #131E29;
+    background-color: #101820;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -58,16 +58,20 @@
     color: white;
 }
 
-.car-item {
-    background-color: #25282A;
-    padding: 1rem 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    color: #CDCDCD;
+.car-list-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
 }
 
-.car-item p {
-    margin: 0.5rem 0;
+.car-card {
+    background-color: #131E29;
+}
+
+.car-type {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .token-button-group {
@@ -92,11 +96,6 @@
     max-width: 48%;
 }
 
-.token-refresh-button:hover,
-.token-delete-button:hover {
-    background-color: #0072CE;
-}
-
 @media (max-width: 768px) {
     .token-button-group {
         flex-direction: column;
@@ -117,5 +116,10 @@
 
     .section-title {
         text-align: center;
+    }
+
+    .car-card {
+        width: 100%;
+        max-width: 320px;
     }
 }
