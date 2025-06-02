@@ -27,7 +27,6 @@ const ListPage = () => {
       <div className="content-section">
         <div className="filter-wrapper">
           <div className="filter-header">
-            <h3 className="filter-title">필터</h3>
             <div className="reset-wrapper" onClick={handleReset}>
               <span className="reset-label">초기화</span>
               <button className="reset-button" title="초기화">
