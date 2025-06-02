@@ -1,12 +1,13 @@
 .search-bar-container {
   display: flex;
   align-items: center;
-  background-color: #f4f9fd;
+  background-color: #E6EFF7;
   border-radius: 20px;
   padding: 0.4rem 1rem;
-  max-width: 700px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  height: 60px;
+  max-width: 1080px;
+  max-height: 89px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px
 }
 
 .search-bar-wrapper {
@@ -14,7 +15,7 @@
   align-items: center;
   flex: 1;
   gap: 1rem;
-  background-color: #f4f9fd;
+  background-color: #E6EFF7;
   border-radius: 999px;
 }
 
@@ -23,7 +24,7 @@
   align-items: center;
   font-weight: 600;
   font-size: 0.95rem;
-  color: #111;
+  color: #101820;
   gap: 0.5rem;
   white-space: nowrap;
   cursor: pointer;
@@ -32,18 +33,18 @@
 }
 
 .search-option.disabled {
-  color: #bbb;
+  color: #CDCDCD;
   cursor: default;
 }
 
 .divider {
   width: 1px;
   height: 20px;
-  background-color: #ccc;
+  background-color: #CDCDCD;
 }
 
 .search-button {
-  background-color: #111;
+  background-color: #101820;
   color: white;
   border: none;
   border-radius: 50%;
@@ -52,12 +53,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
   padding: 0;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .search-button:hover {
-  background-color: #333;
+  background-color: #373A36;
 }

@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,7 +12,7 @@
 }
 
 .modal-content {
-    background-color: #1C1E29;
+    background-color: #131E29;
     color: white;
     padding: 2rem;
     border-radius: 16px;
@@ -22,7 +22,7 @@
     overflow-y: auto;
     position: relative;
     font-family: 'Noto Sans KR', sans-serif;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .modal-close {
@@ -31,10 +31,10 @@
     right: 1rem;
     background: none;
     border: none;
-    color: #ccc;
+    color: #CDCDCD;
     font-size: 1.5rem;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.3s;
     width: auto;
     height: auto;
     padding: 0.25rem;
@@ -65,7 +65,7 @@
 
 .modal-header p {
     font-size: 1rem;
-    color: #ccc;
+    color: #CDCDCD;
 }
 
 .modal-body ul {
@@ -78,7 +78,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #373A36;
     font-size: 1.05rem;
 }
 
@@ -87,5 +87,5 @@
 }
 
 .repair-status {
-    color: #a0e0ff;
+    color: #B8D0E9;
 }

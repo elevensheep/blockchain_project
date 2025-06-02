@@ -1,5 +1,5 @@
 .sign-page {
-  min-height: 76.3vh;
+  min-height: 72.8vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -13,7 +13,6 @@
   max-width: 550px;
   border-radius: 12px;
   box-sizing: border-box;
-  backdrop-filter: blur(8px);
 }
 
 .form {
@@ -40,21 +39,21 @@ label {
 .info-text {
   font-size: 0.825em;
   margin-bottom: 11px;
-  color: #A7C7F3;
+  color: #B8D0E9;
   text-align: right;
 }
 
 .checkbox-container {
   display: flex;
   align-items: flex-start;
-  gap: 9px;
+  gap: 0.5rem;
   font-size: 0.825em;
   margin: 11px 0;
   line-height: 1.54em;
 }
 
 .checkbox-container input[type="checkbox"] {
-  accent-color: #A7C7F3;
+  accent-color: #B8D0E9;
   width: 17.6px;
   height: 17.6px;
   margin-top: 4px;
@@ -63,25 +62,60 @@ label {
 button {
   width: 100%;
   padding: 13.2px;
-  background-color: #333949;
+  background-color: #0072CE;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 1.1em;
-  cursor: pointer;
   margin-top: 11px;
+}
+
+.easy-login-group {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.easy-login-btn {
+  all: unset;
+  flex: 1;
+  padding: 13.2px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.brand-logo {
+  width: 24px;
+  height: auto;
+}
+
+.easy-login-btn.kia {
+  background-color: #05141F;
+}
+
+.easy-login-btn.genesis {
+  background-color: black;
+}
+
+.easy-login-btn.bluelink {
+  background-color: #002E6B;
 }
 
 .wallet-btn {
   background-color: white;
-  color: #333949;
-  border: 1px solid #ccc;
+  color: #373A36;
+  border: 1px solid #CDCDCD;
 }
 
 .register {
   margin-top: 22px;
   font-size: 0.88em;
-  color: #ccc;
+  color: #CDCDCD;
   text-align: center;
 }
 

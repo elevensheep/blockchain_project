@@ -1,0 +1,214 @@
+.list-page {
+  color: white;
+  padding: 2rem 0;
+}
+
+.search-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content-section {
+  display: flex;
+  max-width: 1200px;
+  margin: 2rem auto;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.filter-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+}
+
+.reset-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #CDCDCD;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  min-width: 80px;
+}
+
+.reset-button {
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0.2rem;
+  transition: transform 0.3s;
+}
+
+.reset-button:hover {
+  transform: rotate(-20deg);
+}
+
+.filter-panel {
+  max-width: 260px;
+  background-color: #101820;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'BMHANNAPro';
+  font-weight: normal;
+  font-size: 1rem;
+  color: white;
+}
+
+.filter-panel select {
+  width: 100%;
+  background-color: #101820;
+  color: white;
+  border: 1px solid #3E4E5E;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group h4 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+.filter-group label,
+.checkbox-grid label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  font-size: 1.1rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.3rem 1rem;
+}
+
+.filter-group input,
+.filter-panel select {
+  font-family: 'BMHANNAPro';
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.filter-group input[type="range"] {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  background: white;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.filter-group input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #101820;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.filter-group input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #101820;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.mileage-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+}
+
+.price-button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.price-btn {
+  background-color: #101820;
+  color: white;
+  border: 1px solid #3E4E5E;
+  padding: 0.3rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.price-btn:hover,
+.price-btn.selected {
+  background-color: #3E4E5E;
+}
+
+.price-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.price-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.price-input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #3E4E5E;
+  background-color: #101820;
+  color: white;
+  font-size: 1rem;
+  font-family: 'BMHANNAPro';
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.price-input::placeholder {
+  color: #aaa;
+}
+
+.price-hint {
+  font-size: 0.9rem;
+  color: #aaa;
+  white-space: nowrap;
+}
+
+.car-listing {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+  flex: 1;
+}

@@ -1,0 +1,125 @@
+.profile-page {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1.5rem 2rem;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 850px;
+    box-sizing: border-box;
+}
+
+.page-title {
+    margin-bottom: 2.5rem;
+    color: white;
+    padding-left: 0.5rem;
+    font-size: 2.25rem;
+    text-align: left;
+}
+
+.section {
+    margin-bottom: 2.5rem;
+    padding: 0 0.5rem;
+}
+
+.section-title {
+    font-family: 'BMHANNAPro';
+    font-weight: normal;
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.info-card {
+    background-color: #101820;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #CDCDCD;
+    text-align: left;
+}
+
+.info-card p {
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.car-promo-text {
+    font-family: 'BMHANNAPro';
+    font-weight: normal;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.car-list-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.car-card {
+    background-color: #131E29;
+}
+
+.car-type {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.token-button-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.token-refresh-button,
+.token-delete-button {
+    background-color: #0072CE;
+    color: white;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    flex: 1;
+    min-width: 120px;
+    max-width: 48%;
+}
+
+@media (max-width: 768px) {
+    .token-button-group {
+        flex-direction: column;
+    }
+
+    .token-refresh-button,
+    .token-delete-button {
+        width: 100%;
+    }
+
+    .info-card {
+        padding: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        text-align: center;
+    }
+
+    .car-card {
+        width: 100%;
+        max-width: 320px;
+    }
+}

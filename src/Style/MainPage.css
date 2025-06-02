@@ -1,0 +1,237 @@
+.main-page {
+  background: linear-gradient(to top, #101820, #25282A);
+  color: white;
+}
+
+.triangle-section {
+  position: relative;
+  width: 100%;
+  background-color: #101820;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  padding: 30px 0 100px;
+  z-index: 1;
+}
+
+.car-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.car-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.car-list-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0 0 1rem;
+  color: white;
+  justify-content: flex-start;
+  font-size: 1.2rem;
+}
+
+.car-list-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.arrow-icon {
+  font-size: 1.2rem;
+  margin-left: 4px;
+  transition: transform 0.3s ease;
+}
+
+.car-list-header:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+.car-card {
+  background-color: #131E29;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  color: white;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+}
+
+.car-card img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.badges {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+.badge.diagnose {
+  background-color: #002D72;
+  color: white;
+}
+
+.badge.trust {
+  background-color: #E6EFF7;
+  color: #373A36;
+}
+
+.car-name {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 12px 0;
+}
+
+.car-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box > * {
+  width: 100%;
+  max-width: 1080px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+  text-align: center;
+}
+
+.feature-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.feature-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: white;
+  width: 80%;
+  margin: 4rem auto;
+  opacity: 0.3;
+}
+
+.partner-section {
+  padding-bottom: 6rem;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.partners {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 5rem;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+}
+
+.partners img {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .car-list {
+    padding: 0 20px;
+    gap: 1rem;
+  }
+
+  .car-list-header {
+    padding: 0 0 1rem;
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .car-card {
+    width: 90%;
+    max-width: 320px;
+  }
+
+  .partners {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .partners img {
+    width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .car-price {
+    font-size: 1.2rem;
+  }
+
+  .car-name {
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+
+  .search-box {
+    padding: 0 1rem;
+  }
+}

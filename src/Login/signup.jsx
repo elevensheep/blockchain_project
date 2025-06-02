@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Style/Sign.css';
 
@@ -11,6 +11,7 @@ const Signup = () => {
       alert('약관에 동의해야 회원가입이 가능합니다.');
       return;
     }
+    // 회원가입 처리 로직
     alert('회원가입이 완료되었습니다.');
   };
 
@@ -18,16 +19,14 @@ const Signup = () => {
     <div className="sign-page">
       <div className="form-section">
         <h1>회원가입</h1>
-        <form onSubmit={handleSubmit} className="form">
-          <label htmlFor="email">이메일 주소</label>
-          <input type="email" id="email" placeholder="username@gmail.com" required />
+        <form onSubmit={handleSubmit} className="signup-form">
+          <input type="email" placeholder="username@gmail.com" required />
 
           <div className="info-text">
             Your Coinbase NFT URL: https://nft.coinbase.com/@YourUserNameHere
           </div>
 
-          <label htmlFor="password">비밀번호</label>
-          <input type="password" id="password" placeholder="Password" required />
+          <input type="password" placeholder="Password" required />
 
           <div className="checkbox-container">
             <input
@@ -45,7 +44,7 @@ const Signup = () => {
         </form>
 
         <div className="register">
-          이미 회원이신가요? <Link to="/login">로그인</Link>
+          Already a member? <Link to="/login">Go to login</Link>
         </div>
       </div>
     </div>
