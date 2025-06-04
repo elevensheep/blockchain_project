@@ -15,7 +15,6 @@ const handleReset = () => {
 
 const ListPage = () => {
   const [selectedPrice, setSelectedPrice] = useState(null);
-  const [minMileage, setMinMileage] = useState(0);
   const [maxMileage, setMaxMileage] = useState(200000);
 
   return (
@@ -51,6 +50,7 @@ const ListPage = () => {
               <label><input type="radio" name="brand" /> 전체</label>
               <label><input type="radio" name="brand" /> 기아</label>
               <label><input type="radio" name="brand" /> 제네시스</label>
+              <label><input type="radio" name="brand" /> 현대</label>
             </div>
 
             <div className="filter-group">

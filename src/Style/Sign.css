@@ -62,7 +62,7 @@ label {
 button {
   width: 100%;
   padding: 13.2px;
-  background-color: #0072CE;
+  background-color: #25282A;
   color: white;
   border: none;
   border-radius: 5px;
@@ -108,7 +108,7 @@ button {
 
 .wallet-btn {
   background-color: white;
-  color: #373A36;
+  color: #25282A;
   border: 1px solid #CDCDCD;
 }
 

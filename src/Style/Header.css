@@ -14,25 +14,50 @@
 }
 
 .logo {
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.logo .icon {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  font-family: 'BMHANNAPro';
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logo-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.logo-text {
-  font-family: 'BMHANNAPro';
-}
-
 .nav-links {
   display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
 .nav-links a {
   margin: 0 0.5rem;
   color: white;
-  font-family: 'BMHANNAPro';
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-family: 'BMHANNAPro';
+  line-height: 1.2;
+  vertical-align: middle;
 }
 
 .login-signup {
@@ -53,10 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.signup-btn {
-  background-color: #25282A;
+  vertical-align: middle;
 }
 
 .login-area {
@@ -70,14 +92,17 @@
   white-space: nowrap;
   font-family: 'Noto Sans KR', sans-serif;
   color: white;
+  align-items: center;
 }
 
 .menu-link {
   text-decoration: none;
   color: white;
+  vertical-align: middle;
 }
 
 .user-icon {
   font-size: 1.2rem;
   color: white;
+  vertical-align: middle;
 }
