@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { FiRotateCcw } from "react-icons/fi"; // 초기화 아이콘
 import SearchBar from '../Component/SearchBar';
-import mohave from "../Image/kia_mohave_black_2023.png";
+import car from "../Image/exterior1.png";
 import "../Style/ListPage.css";
 
 const carData = new Array(12).fill({
-  name: "기아 모하비 더 마스터 디젤 3.0 4WD 7인승 마스터즈",
-  image: mohave,
+  name: "현대 i30 가솔린 1.6 터보 2WD 5인승 인스퍼레이션",
+  image: car,
 });
 
 const handleReset = () => {
@@ -112,8 +112,8 @@ const ListPage = () => {
             <div className="filter-group">
               <h4>연식</h4>
               <select>
-                {Array.from({ length: new Date().getFullYear() + 1 - 2015 + 1 }, (_, i) => {
-                  const year = 2015 + i;
+                {Array.from({ length: new Date().getFullYear() + 1 - 1985 + 1 }, (_, i) => {
+                  const year = 1985 + i;
                   return <option key={year}>{year}</option>;
                 })}
               </select>

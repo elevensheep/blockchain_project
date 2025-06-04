@@ -1,6 +1,5 @@
-import React from "react";
 import "../Style/CarRepairModal.css";
-import carImage from "../Image/test-car.png";
+import carImage from "../Image/exterior1.png";
 
 const CarRepairModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;

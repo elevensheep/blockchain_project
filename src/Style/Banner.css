@@ -1,18 +1,19 @@
 .banner-outer-wrapper {
   position: relative;
-  width: 100vw;
-  height: 480px;
+  width: 100%;
+  height: 30rem;
   overflow: hidden;
 }
 
 .banner-wrapper {
   width: 100%;
+  height: 100%;
   position: relative;
 }
 
 .banner-img {
   width: 100%;
-  height: 480px;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -21,14 +22,14 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 40px;
-  height: 80px;
+  width: 2.5rem;
+  height: 5rem;
+  background-color: rgba(0, 0, 0, 0.45);
   border: none;
   color: white;
   font-size: 2.5rem;
   cursor: pointer;
-  z-index: 10;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,19 +37,19 @@
 }
 
 .nav-arrow:hover {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .nav-arrow.left {
   left: 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
 }
 
 .nav-arrow.right {
   right: 0;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
 }
 
 .banner-text {
@@ -57,18 +58,16 @@
   left: 5%;
   color: white;
   font-family: 'BMHANNAPro';
-  font-size: 2.8em;
-  z-index: 2;
+  font-size: 2.8rem;
   line-height: 1.4;
-  text-align: left;
-  max-width: 600px;
+  max-width: 37.5rem;
+  z-index: 1;
   word-break: keep-all;
 }
 
 @media (max-width: 768px) {
   .banner-text {
-    font-size: 2em;
+    font-size: 2rem;
     top: 25%;
-    left: 5%;
   }
 }

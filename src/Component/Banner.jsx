@@ -4,11 +4,6 @@ import "../Style/Banner.css";
 
 const images = [
   require("../Image/Bannerimage.png"),
-  // require("../Image/Bannerimage1.png"),
-  // require("../Image/Bannerimage2.png"),
-  // require("../Image/Bannerimage3.png"),
-  // require("../Image/Bannerimage4.png"),
-  // require("../Image/Bannerimage5.png"),
 ];
 
 function Banner() {

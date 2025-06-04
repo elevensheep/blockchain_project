@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from 'react-router-dom';
 import "../Style/AddCarPage.css";
 
@@ -24,16 +23,12 @@ const AddCarPage = () => {
                     </p>
 
                     <div className="button-container">
-                        <button type="submit" className="submit-button">
-                            <Link to="/carinfo" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                내 차량 조회하기
-                            </Link>
-                        </button>
-                        <button type="button" className="submit-button">
-                            <Link to="/sell" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                신규등록하기
-                            </Link>
-                        </button>
+                        <Link to="/carinfo" className="submit-button">
+                            내 차량 조회하기
+                        </Link>
+                        <Link to="/sell" className="submit-button">
+                            신규등록하기
+                        </Link>
                     </div>
                 </form>
             </div>
