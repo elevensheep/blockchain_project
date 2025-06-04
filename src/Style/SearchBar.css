@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
   background-color: #E6EFF7;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   padding: 0.5rem 0.8rem;
-  max-width: 1080px;
-  max-height: 89px;
+  max-width: 67.5rem;
+  max-height: 5.56rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .search-bar-wrapper {
@@ -16,21 +16,23 @@
   flex: 1;
   gap: 0.6rem;
   background-color: #E6EFF7;
-  border-radius: 999px;
+  border-radius: 9999px;
 }
 
-.search-option {
+.search-option,
+.brand-select {
   display: flex;
   align-items: center;
-  font-weight: 600;
+  height: 2.25rem;
   font-size: 1rem;
+  font-weight: 600;
   color: #101820;
-  gap: 0.4rem;
-  white-space: nowrap;
-  cursor: pointer;
-  padding: 0.2rem 0.5rem;
+  background-color: transparent;
   line-height: 1;
-  height: 36px;
+  padding: 0 0.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
 }
 
 .search-option.disabled {
@@ -38,47 +40,8 @@
   cursor: default;
 }
 
-.divider {
-  width: 1px;
-  height: 28px;
-  background-color: #CDCDCD;
-  align-self: center;
-}
-
-.search-button {
-  background-color: #101820;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s ease;
-  padding: 0;
-  position: relative;
-  margin-left: 0.8rem;
-  margin-bottom: 6px;
-}
-
-.search-button:hover {
-  background-color: #3E4E5E;
-}
-
 .brand-select {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #101820;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0 0.5rem;
   appearance: none;
-  display: inline-flex;
-  align-items: center;
-  height: 36px;
-  line-height: 1;
 }
 
 .brand-select:focus {
@@ -87,7 +50,35 @@
 
 .brand-select option {
   color: #101820;
-  background-color: #fff;
+  background-color: white;
+}
+
+.divider {
+  width: 1px;
+  height: 1.75rem;
+  background-color: #CDCDCD;
+  align-self: center;
+}
+
+.search-button {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-left: 0.8rem;
+  margin-bottom: 0.375rem;
+  padding: 0;
+  background-color: #101820;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.search-button:hover {
+  background-color: #3E4E5E;
 }
 
 .search-option img,

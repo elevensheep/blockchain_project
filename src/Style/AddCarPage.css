@@ -67,6 +67,10 @@
 }
 
 .submit-button {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
     background-color: #25282A;
     color: white;
     font-size: 1.2rem;
@@ -74,4 +78,9 @@
     padding: 1rem;
     border: none;
     border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #3E4E5E;
 }

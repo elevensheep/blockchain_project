@@ -1,40 +1,36 @@
 import { useState } from 'react';
 import { FaCar, FaSearch } from 'react-icons/fa';
+import VEHICLE_DATA from '../Data/VehicleData';
 import '../Style/SearchBar.css';
-
-// 확장 가능한 브랜드 목록
-const brands = ['기아', '제네시스', '현대'];
 
 const SearchBar = () => {
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedSubModel, setSelectedSubModel] = useState('');
 
-  const handleBrandChange = (e) => {
-    setSelectedBrand(e.target.value);
-    setSelectedModel('');
-    setSelectedSubModel('');
-  };
+  const brands = [...new Set(VEHICLE_DATA.map((item) => item.brand))];
+  const models = VEHICLE_DATA
+    .filter((item) => item.brand === selectedBrand)
+    .map((item) => item.model);
+  const uniqueModels = [...new Set(models)];
 
-  const handleModelChange = (e) => {
-    setSelectedModel(e.target.value);
-    setSelectedSubModel('');
-  };
-
-  const handleSubModelChange = (e) => {
-    setSelectedSubModel(e.target.value);
-  };
+  const subModels = VEHICLE_DATA.filter(
+    (item) => item.brand === selectedBrand && item.model === selectedModel
+  );
 
   return (
     <div className="search-bar-container">
       <div className="search-bar-wrapper">
-        {/* 브랜드 선택 */}
         <div className="search-option">
           <FaCar className="icon" />
           <select
             className="brand-select"
             value={selectedBrand}
-            onChange={handleBrandChange}
+            onChange={(e) => {
+              setSelectedBrand(e.target.value);
+              setSelectedModel('');
+              setSelectedSubModel('');
+            }}
           >
             <option value="">브랜드 선택</option>
             {brands.map((brand) => (
@@ -47,31 +43,43 @@ const SearchBar = () => {
 
         <div className="divider" />
 
-        {/* 모델 선택 */}
         <div className={`search-option ${!selectedBrand ? 'disabled' : ''}`}>
           <select
             className="brand-select"
             value={selectedModel}
-            onChange={handleModelChange}
+            onChange={(e) => {
+              setSelectedModel(e.target.value);
+              setSelectedSubModel('');
+            }}
             disabled={!selectedBrand}
           >
             <option value="">모델 선택</option>
-            {/* 예시 데이터를 넣고 싶다면 여기에 option을 추가 */}
+            {uniqueModels.map((model) => (
+              <option key={model} value={model}>
+                {model}
+              </option>
+            ))}
           </select>
         </div>
 
         <div className="divider" />
 
-        {/* 세부모델 선택 */}
         <div className={`search-option ${!selectedModel ? 'disabled' : ''}`}>
           <select
             className="brand-select"
             value={selectedSubModel}
-            onChange={handleSubModelChange}
+            onChange={(e) => setSelectedSubModel(e.target.value)}
             disabled={!selectedModel}
           >
             <option value="">세부모델 선택</option>
-            {/* 예시 데이터를 넣고 싶다면 여기에 option을 추가 */}
+            {subModels.map((item, index) => (
+              <option
+                key={`${item.subModel}-${index}`}
+                value={`${item.subModel} (${item.year})`}
+              >
+                {`${item.subModel} (${item.year})`}
+              </option>
+            ))}
           </select>
         </div>
       </div>

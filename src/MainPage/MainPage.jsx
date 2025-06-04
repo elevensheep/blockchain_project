@@ -8,8 +8,8 @@ import carLoanImg from "../Image/car-loan.png";
 import sellerImg from "../Image/seller.png";
 import dealImg from "../Image/deal.png";
 import bitcoinImg from "../Image/bitcoin.png";
-import mohave from "../Image/hyundai_grandeur_white_2022.png";
-import grandeur from "../Image/hyundai_sonata_gray_2021.png";
+import hyundai from "../Image/exterior1.png";
+import kia from "../Image/exterior2.png";
 import sonata from "../Image/kia_mohave_black_2023.png";
 import partner1 from "../Image/partner1.png"
 import partner2 from "../Image/partner2.png"
@@ -21,13 +21,13 @@ const MainPage = () => {
 
     const cars = [
         {
-            name: "기아 모하비 더 마스터 디젤 3.0 4WD 7인승 마스터즈",
-            image: mohave,
+            name: "현대 i30 가솔린 1.6 터보 2WD 5인승 인스퍼레이션",
+            image: hyundai,
             price: "6,974 만원"
         },
         {
             name: "현대 더 뉴 그랜저 IG 2.5 프리미엄",
-            image: grandeur,
+            image: kia,
             price: "1,960 만원",
         },
         {
