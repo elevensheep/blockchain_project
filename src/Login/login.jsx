@@ -1,45 +1,84 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import '../Style/Sign.css';
 import kiaIcon from "../Image/login_icon.png";
 import genesisIcon from "../Image/login_icon2.png";
 import bluelinkIcon from "../Image/login_icon3.jpg";
 
 const Login = () => {
-  const handleSubmit = (e) => {
+  const [loginId, setLoginId] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // ✅ useNavigate 선언
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // 로그인 처리 로직
+
+    try {
+      const res = await fetch('http://localhost:5000/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          login_id: loginId,
+          password: password
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(`❌ 로그인 실패: ${data.error || data.detail}`);
+      } else {
+        alert('✅ 로그인이 완료되었습니다.');
+
+        // JWT 토큰 저장 (선택)
+        if (data.token) {
+          sessionStorage.setItem('login_token', data.token);
+        }
+
+        // 홈으로 이동
+        navigate('/');
+      }
+    } catch (error) {
+      alert('🚨 서버 오류로 로그인에 실패했습니다.');
+    }
   };
+  const access_token = sessionStorage.getItem("login_token");
+  console.log("Access Token:", access_token);
 
   const handleLogin = (brand) => {
     const urls = {
-      kia: "http://localhost:5000/login",
-      genesis: "http://localhost:5000/login",
-      bluelink: "http://localhost:5000/login"
+      kia: "http://localhost:5000/oauth",
+      genesis: "http://localhost:5000/oauth",
+      bluelink: "http://localhost:5000/oauth"
     };
     window.location.href = urls[brand];
   };
-
-  // const handleWalletConnect = () => {
-  //   alert('지갑 연결 기능은 아직 구현되지 않았습니다.');
-  // };
 
   return (
     <div className="sign-page">
       <div className="form-section">
         <h1>로그인</h1>
         <form onSubmit={handleSubmit} className="form">
-          <label htmlFor="email">이메일 주소</label>
-          <input type="email" id="email" placeholder="username@gmail.com" required />
+          <label htmlFor="id">아이디</label>
+          <input
+            type="text"
+            id="id"
+            placeholder="ID"
+            onChange={(e) => setLoginId(e.target.value)}
+            required
+          />
 
           <label htmlFor="password">비밀번호</label>
-          <input type="password" id="password" placeholder="Password" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
           <div className="info-text">비밀번호를 잊어버렸나요?</div>
 
-          {/* <label htmlFor="wallet">Connect Wallet Example</label>
-          <button type="button" className="wallet-btn" onClick={handleWalletConnect}>
-            NFT Wallet Connection
-          </button> */}
           <div className="easy-login-group">
             <button type="button" className="easy-login-btn kia" onClick={() => handleLogin('kia')}>
               <img src={kiaIcon} alt="기아 로고" className="brand-logo" />

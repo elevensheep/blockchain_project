@@ -3,16 +3,42 @@ import { Link } from 'react-router-dom';
 import '../Style/Sign.css';
 
 const Signup = () => {
+  const [loginId, setLoginId] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setname] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
   const [agree, setAgree] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!agree) {
       alert('약관에 동의해야 회원가입이 가능합니다.');
       return;
     }
-    // 회원가입 처리 로직
-    alert('회원가입이 완료되었습니다.');
+
+    try {
+      const res = await fetch('http://localhost:5000/api/users/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          login_id: loginId,
+          password: password,
+          name: name, // 선택 필드. 필요시 폼에 추가
+          phone_number: phone_number
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(`❌ 회원가입 실패: ${data.error || data.detail}`);
+      } else {
+        alert('✅ 회원가입이 완료되었습니다.');
+        // 필요 시 navigate('/login') 등 이동
+      }
+    } catch (error) {
+      alert('🚨 서버 오류로 회원가입에 실패했습니다.');
+    }
   };
 
   return (
@@ -20,13 +46,41 @@ const Signup = () => {
       <div className="form-section">
         <h1>회원가입</h1>
         <form onSubmit={handleSubmit} className="signup-form">
-          <input type="email" placeholder="username@gmail.com" required />
+          <input
+            type="loginId"
+            placeholder="ID"
+            value={loginId}
+            onChange={(e) => setLoginId(e.target.value)}
+            required
+          />
 
           <div className="info-text">
             Your Coinbase NFT URL: https://nft.coinbase.com/@YourUserNameHere
           </div>
 
-          <input type="password" placeholder="Password" required />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setname(e.target.value)}
+            required
+          />
+
+          <input
+            type="text"
+            placeholder="Phone Number"
+            value={phone_number}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+          />
 
           <div className="checkbox-container">
             <input
