@@ -16,9 +16,12 @@ const Header = () => {
         <header className="main-header">
             <div className="left-section">
                 <div className="logo">
-                    <Link to="/" className="logo-link" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <FaCar className="icon" /> <span className="logo-text">체인카</span>
-                    </Link>
+                    <div className="logo">
+                        <Link to="/" className="logo-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <FaCar className="icon" />
+                            <span className="logo-text">체인카</span>
+                        </Link>
+                    </div>
                 </div>
                 <nav className="nav-links">
                     <Link to="/addcar">내차팔기</Link>

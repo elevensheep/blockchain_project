@@ -1,27 +1,18 @@
 import { useState } from 'react';
 import "../Style/CarSellPage.css";
 
+// 외부 데이터: 추후 API 연동 가능
+const carTypes = ["승용", "SUV", "승합", "EV"];
+const carModels = ["아반떼", "소나타", "싼타페", "그랜저"];
+
 const CarSellPage = () => {
     const [form, setForm] = useState({
-        carName: '',
         manufacturer: '',
         manufactureYear: '',
-        firstRegistration: '',
         carNumber: '',
-        type: '',
-        fuel: '',
-        engineSize: '',
-        drivetrain: '',
-        color: '',
-        mileage: '',
-        productionDate: '',
-        userName: '',
-        registrationNumber: '',
-        usageHistory: '',
-        insuranceHistory: '',
-        numberOfTransfers: '',
-        regularInspection: '',
         price: '',
+        type: '',
+        carName: '',
         description: ''
     });
 
@@ -46,102 +37,110 @@ const CarSellPage = () => {
     };
 
     return (
-        <div className="car-sell-page">
-            <div className="form-container">
-                <h1 className="title">내 차량 상세 정보 등록</h1>
-                <form className="car-sell-form" onSubmit={handleSubmit}>
-                    <div className="image-upload">
+        <div className="car-sell-form-page">
+            <div className="car-sell-form-container">
+                <h1 className="car-sell-form-title">내 차량 상세 정보 등록</h1>
+                <form className="car-sell-form-wrapper" onSubmit={handleSubmit}>
+                    <div className="car-sell-form-group image-upload">
                         <label htmlFor="image">차량 사진 업로드</label>
-                        <input type="file" accept="image/*" onChange={handleImageUpload} />
-                        {imagePreview && <img src={imagePreview} alt="미리보기" />}
+
+                        <label htmlFor="image" className="custom-file-upload">
+                            파일 선택
+                        </label>
+                        <input
+                            id="image"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                            style={{ display: 'none' }}
+                        />
+
+                        {imagePreview && (
+                            <div className="image-preview-wrapper">
+                                <img src={imagePreview} alt="미리보기" className="image-preview" />
+                            </div>
+                        )}
                     </div>
 
-                    <div className="form-grid">
-                        <div className="form-group">
-                            <label>차명 / 모델명</label>
-                            <input className="car-sell-input" name="carName" value={form.carName} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
+                    <div className="car-sell-form-grid">
+                        <div className="car-sell-form-group">
                             <label>제조사</label>
-                            <input className="car-sell-input" name="manufacturer" value={form.manufacturer} onChange={handleChange} />
+                            <input
+                                className="car-sell-form-input"
+                                name="manufacturer"
+                                value={form.manufacturer}
+                                onChange={handleChange}
+                            />
                         </div>
-                        <div className="form-group">
+                        <div className="car-sell-form-group">
                             <label>연식</label>
-                            <input className="car-sell-input" name="manufactureYear" value={form.manufactureYear} onChange={handleChange} />
+                            <input
+                                className="car-sell-form-input"
+                                name="manufactureYear"
+                                value={form.manufactureYear}
+                                onChange={handleChange}
+                            />
                         </div>
-                        <div className="form-group">
-                            <label>최초 등록일</label>
-                            <input className="car-sell-input" name="firstRegistration" value={form.firstRegistration} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>차대번호</label>
-                            <input className="car-sell-input" name="carNumber" value={form.carNumber} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
+                        <div className="car-sell-form-group">
                             <label>차종</label>
-                            <input className="car-sell-input" name="type" value={form.type} onChange={handleChange} />
+                            <select
+                                className="car-sell-form-input"
+                                name="type"
+                                value={form.type}
+                                onChange={handleChange}
+                            >
+                                <option value="">선택하세요</option>
+                                {carTypes.map((type, index) => (
+                                    <option key={index} value={type}>{type}</option>
+                                ))}
+                            </select>
                         </div>
-                        <div className="form-group">
-                            <label>연료</label>
-                            <input className="car-sell-input" name="fuel" value={form.fuel} onChange={handleChange} />
+                        <div className="car-sell-form-group">
+                            <label>모델명</label>
+                            <select
+                                className="car-sell-form-input"
+                                name="carName"
+                                value={form.carName}
+                                onChange={handleChange}
+                            >
+                                <option value="">선택하세요</option>
+                                {carModels.map((model, index) => (
+                                    <option key={index} value={model}>{model}</option>
+                                ))}
+                            </select>
                         </div>
-                        <div className="form-group">
-                            <label>배기량</label>
-                            <input className="car-sell-input" name="engineSize" value={form.engineSize} onChange={handleChange} />
+                        <div className="car-sell-form-group">
+                            <label>차대번호</label>
+                            <input
+                                className="car-sell-form-input"
+                                name="carNumber"
+                                value={form.carNumber}
+                                onChange={handleChange}
+                            />
                         </div>
-                        <div className="form-group">
-                            <label>구동방식</label>
-                            <input className="car-sell-input" name="drivetrain" value={form.drivetrain} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>색상</label>
-                            <input className="car-sell-input" name="color" value={form.color} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>주행거리</label>
-                            <input className="car-sell-input" name="mileage" value={form.mileage} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>생산일자</label>
-                            <input className="car-sell-input" name="productionDate" value={form.productionDate} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>소유자명</label>
-                            <input className="car-sell-input" name="userName" value={form.userName} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>등록번호</label>
-                            <input className="car-sell-input" name="registrationNumber" value={form.registrationNumber} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>용도 이력</label>
-                            <input className="car-sell-input" name="usageHistory" value={form.usageHistory} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>보험 이력</label>
-                            <input className="car-sell-input" name="insuranceHistory" value={form.insuranceHistory} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>이전 횟수</label>
-                            <input className="car-sell-input" name="numberOfTransfers" value={form.numberOfTransfers} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label>정기검사</label>
-                            <input className="car-sell-input" name="regularInspection" value={form.regularInspection} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
+                        <div className="car-sell-form-group">
                             <label>희망 가격</label>
-                            <input className="car-sell-input" name="price" value={form.price} onChange={handleChange} />
+                            <input
+                                className="car-sell-form-input"
+                                name="price"
+                                value={form.price}
+                                onChange={handleChange}
+                            />
                         </div>
                     </div>
 
-                    <div className="form-group">
+                    <div className="car-sell-form-group">
                         <label>설명</label>
-                        <textarea className="car-sell-textarea" name="description" value={form.description} onChange={handleChange} />
+                        <textarea
+                            className="car-sell-form-textarea"
+                            name="description"
+                            value={form.description}
+                            onChange={handleChange}
+                        />
                     </div>
 
-                    <div className="button-container">
-                        <button type="submit" className="submit-button">판매 등록하기</button>
+                    <div className="car-sell-form-button-container">
+                        <button type="submit" className="car-sell-form-submit-button">판매 등록하기</button>
                     </div>
                 </form>
             </div>

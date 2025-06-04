@@ -49,6 +49,7 @@
 }
 
 .reset-button:hover {
+  background: none;
   transform: rotate(-20deg);
 }
 
@@ -162,7 +163,6 @@
   transition: background-color 0.3s;
 }
 
-.price-btn:hover,
 .price-btn.selected {
   background-color: #3E4E5E;
 }

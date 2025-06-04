@@ -15,7 +15,7 @@ const CarInfoPage = () => {
     //         title: '',
     //         text: '인증이 완료되었습니다.',
     //         confirmButtonText: '확인',
-    //         confirmButtonColor: '#0072CE',
+    //         confirmButtonColor: '#25282A',
     //         background: '#101820',
     //         color: 'white',
     //         customClass: {
