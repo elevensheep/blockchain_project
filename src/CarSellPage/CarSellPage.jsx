@@ -16,7 +16,11 @@ const CarSellPage = () => {
         description: ''
     });
 
+    const [imageFile, setImageFile] = useState(null);  // 이미지 파일 상태 추가
     const [imagePreview, setImagePreview] = useState(null);
+
+    // 판매 등록 결과 메시지 상태
+    const [message, setMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,14 +30,59 @@ const CarSellPage = () => {
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
+            setImageFile(file);  // 이미지 파일 상태 저장
             setImagePreview(URL.createObjectURL(file));
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("판매 등록 정보:", form);
-        alert("차량이 성공적으로 등록되었습니다!");
+
+        const seller_id = "loggedInUserId"; // 실제 로그인 ID 넣기
+
+        // FormData 객체 생성
+        const formData = new FormData();
+        formData.append('seller_id', seller_id);
+        formData.append('car_model', form.carName);
+        formData.append('car_year', Number(form.manufactureYear));
+        formData.append('car_number', form.carNumber);
+        formData.append('price', Number(form.price));
+        formData.append('type', form.type);
+        formData.append('manufacturer', form.manufacturer);
+        formData.append('description', form.description);
+
+        if (imageFile) {
+            formData.append('image', imageFile);  // 이미지 파일 첨부
+        }
+
+        try {
+            const response = await fetch('http://localhost:5000/api/car/register', {
+                method: 'POST',
+                body: formData,  // JSON이 아닌 FormData로 전송
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                setMessage('차량이 성공적으로 등록되었습니다! 차량 ID: ' + result.car_id);
+                // 초기화
+                setForm({
+                    manufacturer: '',
+                    manufactureYear: '',
+                    carNumber: '',
+                    price: '',
+                    type: '',
+                    carName: '',
+                    description: ''
+                });
+                setImageFile(null);
+                setImagePreview(null);
+            } else {
+                setMessage('차량 등록 실패: ' + (result.error || '알 수 없는 오류'));
+            }
+        } catch (error) {
+            setMessage('서버 통신 중 오류가 발생했습니다: ' + error.message);
+        }
     };
 
     return (
@@ -143,6 +192,8 @@ const CarSellPage = () => {
                         <button type="submit" className="car-sell-form-submit-button">판매 등록하기</button>
                     </div>
                 </form>
+
+                {message && <p className="result-message">{message}</p>}
             </div>
         </div>
     );

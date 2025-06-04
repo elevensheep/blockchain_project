@@ -47,9 +47,9 @@ const Login = () => {
 
   const handleLogin = (brand) => {
     const urls = {
-      kia: "http://localhost:5000/oauth",
-      genesis: "http://localhost:5000/oauth",
-      bluelink: "http://localhost:5000/oauth"
+      kia: "http://localhost:5000/oauth/login",
+      genesis: "http://localhost:5000/oauth/login",
+      bluelink: "http://localhost:5000/oauth/login"
     };
     window.location.href = urls[brand];
   };
