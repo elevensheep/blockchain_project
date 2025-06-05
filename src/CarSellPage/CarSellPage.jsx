@@ -14,6 +14,7 @@ const CarSellPage = () => {
         description: ''
     });
 
+    
     const [imageFile, setImageFile] = useState(null);  // 이미지 파일 상태 추가
     const [imagePreview, setImagePreview] = useState(null);
 
@@ -42,14 +43,19 @@ const CarSellPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+               const token = sessionStorage.getItem('login_token');
+        console.log('Access Token:', token);
+
+        if (!token) {
+            setMessage('로그인이 필요합니다.');
+            return;
+        }
         const seller_id = "loggedInUserId"; // 실제 로그인 ID 넣기
 
         // FormData 객체 생성
         const formData = new FormData();
-        formData.append('seller_id', seller_id);
-        formData.append('car_model', form.carName);
-        formData.append('car_year', Number(form.manufactureYear));
-        formData.append('car_number', form.carNumber);
+        formData.append('car_model', form.car_model);
+        formData.append('car_year', Number(form.car_year));
         formData.append('price', Number(form.price));
         formData.append('type', form.type);
         formData.append('manufacturer', form.manufacturer);
@@ -62,7 +68,10 @@ const CarSellPage = () => {
         try {
             const response = await fetch('http://localhost:5000/api/car/register', {
                 method: 'POST',
-                body: formData,  // JSON이 아닌 FormData로 전송
+                                headers: {
+                    Authorization: `Bearer ${token}` // 🔐 JWT 토큰 포함
+                },
+                body: formData
             });
 
             const result = await response.json();
@@ -128,7 +137,7 @@ const CarSellPage = () => {
                         </div>
                         <div className="car-sell-form-group">
                             <label>모델</label>
-                            <select name="model" value={form.model} onChange={handleChange} className="car-sell-form-input" disabled={!form.brand}>
+                            <select name="car_model" value={form.car_model} onChange={handleChange} className="car-sell-form-input" disabled={!form.brand}>
                                 <option value="">선택하세요</option>
                                 {uniqueModels.map((m, i) => <option key={i} value={m}>{m}</option>)}
                             </select>
