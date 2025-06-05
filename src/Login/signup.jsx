@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import '../Style/Sign.css';
 
 const Signup = () => {
@@ -8,6 +8,7 @@ const Signup = () => {
   const [name, setname] = useState('');
   const [phone_number, setPhoneNumber] = useState('');
   const [agree, setAgree] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ const Signup = () => {
         alert(`❌ 회원가입 실패: ${data.error || data.detail}`);
       } else {
         alert('✅ 회원가입이 완료되었습니다.');
-        // 필요 시 navigate('/login') 등 이동
+        navigate('/login'); // 회원가입 성공 후 로그인 페이지로 이동
       }
     } catch (error) {
       alert('🚨 서버 오류로 회원가입에 실패했습니다.');
