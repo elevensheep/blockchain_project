@@ -15,7 +15,7 @@ function MyPage() {
     // 토큰 갱신
     const handleRefresh = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/refresh?refresh_token=${refresh_token}`);
+            const res = await fetch(`http://localhost:5000/oauth/refresh?refresh_token=${refresh_token}`);
             const data = await res.json();
             console.log("✅ Refresh Success:", data);
 
@@ -35,7 +35,7 @@ function MyPage() {
     // 로그아웃 및 토큰 삭제
     const handleDelete = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/delete?access_token=${access_token}`);
+            const res = await fetch(`http://localhost:5000/oauth/delete?access_token=${access_token}`);
             const data = await res.json();
             console.log("🧹 Delete Response:", data);
 
@@ -58,7 +58,7 @@ function MyPage() {
             }
 
             try {
-                const response = await fetch("http://localhost:5000/profile", {
+                const response = await fetch("http://localhost:5000/oauth/profile", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${access_token}`,
@@ -88,7 +88,7 @@ function MyPage() {
             if (!access_token) return;
 
             try {
-                const res = await fetch("http://localhost:5000/mycarlist", {
+                const res = await fetch("http://localhost:5000/oauth/mycarlist", {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${access_token}`

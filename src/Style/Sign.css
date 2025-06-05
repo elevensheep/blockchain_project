@@ -20,7 +20,8 @@
   flex-direction: column;
 }
 
-input[type="email"],
+input[type="loginId"],
+input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 13.2px;

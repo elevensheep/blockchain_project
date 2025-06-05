@@ -21,7 +21,7 @@ function RedirectPage() {
             hasRequested.current = true;
 
             try {
-                const res = await fetch(`http://localhost:5000/access?code=${code}`);
+                const res = await fetch(`http://localhost:5000/oauth/access?code=${code}`);
 
                 if (!res.ok) {
                     const errText = await res.text();
