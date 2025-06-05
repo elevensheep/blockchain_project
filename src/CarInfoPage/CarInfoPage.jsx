@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "../Style/CarInfoPage.css";
 import CarRepairModal from "../CarRepairModal/CarRepairModal";
@@ -102,7 +103,9 @@ const CarInfoPage = () => {
             </div>
 
             <div className="car-info">
-                <button>차량 거래하기</button>
+                <Link to="/transaction" className="transaction-button">
+                    차량 거래하기
+                </Link>
             </div>
 
             <CarRepairModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
