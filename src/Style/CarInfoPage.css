@@ -8,9 +8,10 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.car-slider-outer {
-    position: relative;
+.car-slider-outer,
+.car-info-section {
     width: 100%;
+    max-width: 1140px;
     margin-bottom: 2rem;
     overflow: hidden;
 }
@@ -28,7 +29,7 @@
 }
 
 .car-img {
-    width: 35%;
+    width: 40%;
     margin: 0 0.5rem;
     object-fit: contain;
 }
@@ -67,74 +68,57 @@
     border-bottom-left-radius: 8px;
 }
 
-.car-info-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    width: 80%;
-    align-items: stretch;
-}
-
-.car-info-card {
-    flex: 1 1 45%;
-    min-width: 280px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: white;
-}
-
-.car-info-card h2 {
+.car-section-title {
     font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
     text-align: left;
 }
 
-.info-grid {
+.car-info-title-row-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.car-btn-small {
+    width: 120px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.car-btn-small:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.car-info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.7rem 1.5rem;
     font-size: 1.05rem;
 }
 
-.history-grid .span-2 {
-    grid-column: span 2;
-}
-
-.car-info-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.action-btn {
-    flex: 1 1 180px;
-    padding: 0.75rem 1rem;
-    font-size: 1.05rem;
+.transaction-button {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #25282A;
     color: white;
+    font-size: 1.2rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
-.card-header-with-button {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0.5rem;
-}
-
-.card-header-with-button h2 {
-    margin: 0;
-    font-size: 1.3rem;
-    line-height: 1.6rem;
-}
-
-.small-action-btn {
-    width: 120px;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-    line-height: 1.6rem;
+.transaction-button:hover {
+    background-color: #3E4E5E;
 }
 
 @media (max-width: 768px) {
@@ -142,21 +126,18 @@
         padding: 2rem 1rem;
     }
 
-    .car-info-wrapper {
+    .car-info-title-row-between {
         flex-direction: column;
-    }
-
-    .car-info-actions {
-        flex-direction: column;
-    }
-
-    .action-btn,
-    .small-action-btn {
+        align-items: flex-start;
         width: 100%;
     }
 
-    .card-header-with-button {
-        flex-direction: column;
-        align-items: flex-start;
+    .car-btn-small {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .car-info-grid {
+        grid-template-columns: 1fr;
     }
 }

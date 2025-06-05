@@ -1,0 +1,90 @@
+.transaction-page {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 2rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: white;
+    min-height: 100vh;
+}
+
+.transaction-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #131E29;
+    border-radius: 16px;
+    padding: 3rem;
+}
+
+.transaction-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.transaction-status {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.status-label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.status-value {
+    color: #B8D0E9;
+}
+
+.status-value.completed {
+    color: #E6EFF7;
+}
+
+.summary-box {
+    background-color: #101820;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.transaction-section {
+    margin-bottom: 2.5rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #25282A;
+    padding-bottom: 0.5rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    background-color: #101820;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.info-grid div {
+    font-size: 1rem;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.action-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.2s;
+}
