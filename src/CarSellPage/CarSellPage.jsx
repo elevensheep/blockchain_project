@@ -8,18 +8,15 @@ const carModels = ["아반떼", "소나타", "싼타페", "그랜저"];
 const CarSellPage = () => {
     const [form, setForm] = useState({
         manufacturer: '',
-        manufactureYear: '',
-        carNumber: '',
+        car_year: '',
         price: '',
         type: '',
-        carName: '',
+        car_model: '',
         description: ''
     });
 
-    const [imageFile, setImageFile] = useState(null);  // 이미지 파일 상태 추가
+    const [imageFile, setImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
-
-    // 판매 등록 결과 메시지 상태
     const [message, setMessage] = useState('');
 
     const handleChange = (e) => {
@@ -30,7 +27,7 @@ const CarSellPage = () => {
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setImageFile(file);  // 이미지 파일 상태 저장
+            setImageFile(file);
             setImagePreview(URL.createObjectURL(file));
         }
     };
@@ -38,41 +35,45 @@ const CarSellPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const seller_id = "loggedInUserId"; // 실제 로그인 ID 넣기
+       const token = sessionStorage.getItem('login_token');
+        console.log('Access Token:', token);
 
-        // FormData 객체 생성
+        if (!token) {
+            setMessage('로그인이 필요합니다.');
+            return;
+        }
+
         const formData = new FormData();
-        formData.append('seller_id', seller_id);
-        formData.append('car_model', form.carName);
-        formData.append('car_year', Number(form.manufactureYear));
-        formData.append('car_number', form.carNumber);
+        formData.append('car_model', form.car_model);
+        formData.append('car_year', Number(form.car_year));
         formData.append('price', Number(form.price));
         formData.append('type', form.type);
         formData.append('manufacturer', form.manufacturer);
         formData.append('description', form.description);
 
         if (imageFile) {
-            formData.append('image', imageFile);  // 이미지 파일 첨부
+            formData.append('image', imageFile);
         }
 
         try {
             const response = await fetch('http://localhost:5000/api/car/register', {
                 method: 'POST',
-                body: formData,  // JSON이 아닌 FormData로 전송
+                headers: {
+                    Authorization: `Bearer ${token}` // 🔐 JWT 토큰 포함
+                },
+                body: formData
             });
 
             const result = await response.json();
 
             if (response.ok) {
                 setMessage('차량이 성공적으로 등록되었습니다! 차량 ID: ' + result.car_id);
-                // 초기화
                 setForm({
                     manufacturer: '',
-                    manufactureYear: '',
-                    carNumber: '',
+                    car_year: '',
                     price: '',
                     type: '',
-                    carName: '',
+                    car_model: '',
                     description: ''
                 });
                 setImageFile(null);
@@ -93,9 +94,7 @@ const CarSellPage = () => {
                     <div className="car-sell-form-group image-upload">
                         <label htmlFor="image">차량 사진 업로드</label>
 
-                        <label htmlFor="image" className="custom-file-upload">
-                            파일 선택
-                        </label>
+                        <label htmlFor="image" className="custom-file-upload">파일 선택</label>
                         <input
                             id="image"
                             type="file"
@@ -125,8 +124,8 @@ const CarSellPage = () => {
                             <label>연식</label>
                             <input
                                 className="car-sell-form-input"
-                                name="manufactureYear"
-                                value={form.manufactureYear}
+                                name="car_year"
+                                value={form.car_year}
                                 onChange={handleChange}
                             />
                         </div>
@@ -148,8 +147,8 @@ const CarSellPage = () => {
                             <label>모델명</label>
                             <select
                                 className="car-sell-form-input"
-                                name="carName"
-                                value={form.carName}
+                                name="car_model"
+                                value={form.car_model}
                                 onChange={handleChange}
                             >
                                 <option value="">선택하세요</option>
@@ -157,15 +156,6 @@ const CarSellPage = () => {
                                     <option key={index} value={model}>{model}</option>
                                 ))}
                             </select>
-                        </div>
-                        <div className="car-sell-form-group">
-                            <label>차대번호</label>
-                            <input
-                                className="car-sell-form-input"
-                                name="carNumber"
-                                value={form.carNumber}
-                                onChange={handleChange}
-                            />
                         </div>
                         <div className="car-sell-form-group">
                             <label>희망 가격</label>
