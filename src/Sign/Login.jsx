@@ -8,7 +8,7 @@ import bluelinkIcon from "../Image/login_icon3.jpg";
 const Login = () => {
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // ✅ useNavigate 선언
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,7 +77,9 @@ const Login = () => {
             required
           />
 
-          <div className="info-text">비밀번호를 잊어버렸나요?</div>
+          <div className="info-text">
+            <Link to="/reset-password">비밀번호를 잊어버렸나요?</Link>
+          </div>
 
           <div className="easy-login-group">
             <button type="button" className="easy-login-btn kia" onClick={() => handleLogin('kia')}>
