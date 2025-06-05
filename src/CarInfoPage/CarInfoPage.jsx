@@ -36,7 +36,6 @@ const CarInfoPage = () => {
         manufacturer: "현대",
         manufactureYear: "2021년",
         firstRegistration: "2021-05-15",
-        carNumber: "KMHLN81BMPU123456",
         transmission: "자동",
         fuel: "가솔린",
         engineSize: "1,598cc",
@@ -81,43 +80,29 @@ const CarInfoPage = () => {
                 </button>
             </div>
 
-            <div className="car-info-wrapper">
-                <div className="car-info-card">
-                    <h2>🚗 차량 기본 정보</h2>
-                    <div className="info-grid">
-                        <div>차명 / 모델명: {carInfo.carName}</div>
-                        <div>제조사: 현대</div>
-                        <div>연식: {carInfo.manufactureYear}</div>
-                        <div>최초 등록일: {carInfo.firstRegistration}</div>
-                        <div>차대번호(VIN): {carInfo.carNumber}</div>
-                        <div>변속기: {carInfo.transmission}</div>
-                        <div>연료 종류: {carInfo.fuel}</div>
-                        <div>배기량: {carInfo.engineSize}</div>
-                        <div>구동방식: {carInfo.drivetrain}</div>
-                        <div>차량 색상: {carInfo.color}</div>
-                    </div>
+            <div className="car-info-section">
+                <div className="car-info-title-row-between">
+                    <h2 className="car-section-title">🚗 차량 기본 정보</h2>
+                    <button className="car-btn-small" onClick={() => setIsModalOpen(true)}>
+                        수리 기록 조회
+                    </button>
                 </div>
 
-                <div className="car-info-card history-card">
-                    <div className="card-header-with-button">
-                        <h2>🛠 차량 이력 정보</h2>
-                        <button className="small-action-btn" onClick={() => setIsModalOpen(true)}>
-                            수리 기록 조회
-                        </button>
-                    </div>
-                    <div className="info-grid history-grid">
-                        <div className="span-2">소유자 변경 횟수: {carInfo.numberOfTransfers}회</div>
-                        <div className="span-2">용도 이력: {carInfo.usageHistory}</div>
-                        <div className="span-2">사고 이력: {carInfo.accidentHistory}</div>
-                        <div className="span-2">보험 사고: {carInfo.insuranceHistory}</div>
-                        <div className="span-2">주행거리: {carInfo.mileage}</div>
-                        <div className="span-2">정기검사: {carInfo.regularInspection}</div>
-                    </div>
+                <div className="car-info-grid">
+                    <div>차명 / 모델명: {carInfo.carName}</div>
+                    <div>연식: {carInfo.manufactureYear}</div>
+                    <div>변속기: {carInfo.transmission}</div>
+                    <div>배기량: {carInfo.engineSize}</div>
+                    <div>차량 색상: {carInfo.color}</div>
+                    <div>제조사: {carInfo.manufacturer}</div>
+                    <div>최초 등록일: {carInfo.firstRegistration}</div>
+                    <div>연료 종류: {carInfo.fuel}</div>
+                    <div>구동방식: {carInfo.drivetrain}</div>
                 </div>
             </div>
 
-            <div className="car-info-actions">
-                <button className="action-btn">차량 인증 신청하기</button>
+            <div className="car-info">
+                <button>차량 거래하기</button>
             </div>
 
             <CarRepairModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
