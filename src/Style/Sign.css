@@ -44,20 +44,22 @@ label {
   text-align: right;
 }
 
+.info-text a {
+  color: #B8D0E9;
+  text-decoration: none;
+}
+
 .checkbox-container {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
   font-size: 0.825em;
-  margin: 11px 0;
   line-height: 1.54em;
+  margin: 11px 0;
 }
 
 .checkbox-container input[type="checkbox"] {
-  accent-color: #B8D0E9;
-  width: 17.6px;
-  height: 17.6px;
-  margin-top: 4px;
+  margin-top: 0.3em;
 }
 
 button {
