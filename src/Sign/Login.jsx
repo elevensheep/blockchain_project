@@ -78,7 +78,7 @@ const Login = () => {
           />
 
           <div className="info-text">
-            <Link to="/reset-password">비밀번호를 잊어버렸나요?</Link>
+            <Link to="/verify-user">비밀번호를 잊어버렸나요?</Link>
           </div>
 
           <div className="easy-login-group">
