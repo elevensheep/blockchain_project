@@ -13,6 +13,7 @@ import TransactionPage from './TransactionPage/TransactionPage';
 import CarInfoPage from './CarInfoPage/CarInfoPage';
 import RedirectPage from './Component/RedirectPage';
 import MyPage from './MyPage/MyPage';
+import VerifyUser from './Component/VerifyUser';
 import './App.css';
 //import MyCarListTest from './Component/MyCarListTest';
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/carinfo" element={<CarInfoPage />} />
           <Route path="/redirect" element={<RedirectPage />} />
           <Route path="/mypage" element={<MyPage />} />
+          <Route path="/verify-user" element={<VerifyUser />} />
           {/* <Route path="/test" element={<MyCarListTest />} /> */}
         </Routes>
         <Footer />
