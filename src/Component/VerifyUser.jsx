@@ -14,7 +14,7 @@ const VerifyUser = () => {
     setError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/users/verify-reset-user', {
+      const res = await fetch('http://localhost:8001/api/users/verify-reset-user', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ login_id: loginId, name, phone_number: phoneNumber })

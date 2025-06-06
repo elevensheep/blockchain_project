@@ -17,7 +17,7 @@ function MyPage() {
     if (!access_token) return;
 
     try {
-      const res = await fetch("http://localhost:5000/api/car/mycars", {
+      const res = await fetch("http://localhost:8001/api/car/mycars", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${access_token}`,
@@ -41,7 +41,7 @@ function MyPage() {
   // 토큰 갱신
   const handleRefresh = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/oauth/refresh?refresh_token=${refresh_token}`);
+      const res = await fetch(`http://localhost:8001/oauth/refresh?refresh_token=${refresh_token}`);
       const data = await res.json();
       console.log("✅ Refresh Success:", data);
 
@@ -61,7 +61,7 @@ function MyPage() {
   // 로그아웃 및 토큰 삭제
   const handleDelete = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/oauth/delete?access_token=${access_token}`);
+      const res = await fetch(`http://localhost:8001/oauth/delete?access_token=${access_token}`);
       const data = await res.json();
       console.log("🧹 Delete Response:", data);
 
@@ -82,7 +82,7 @@ function MyPage() {
   if (!confirmDelete) return;
 
   try {
-    const res = await fetch(`http://localhost:5000/api/car/delete/${carId}`, {
+    const res = await fetch(`http://localhost:8001/api/car/delete/${carId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${access_token}`,
@@ -118,7 +118,7 @@ function MyPage() {
       }
 
       try {
-       const response = await fetch("http://localhost:5000/api/users/profile", {
+       const response = await fetch("http://localhost:8001/api/users/profile", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${access_token}`,
@@ -194,7 +194,7 @@ function MyPage() {
                     )}
                     {car.images && car.images.length > 0 && (
                       <img
-                        src={`http://localhost:5000/uploads/${car.images[0]}`}
+                        src={`http://localhost:8001/uploads/${car.images[0]}`}
                         alt="차량 이미지"
                         className="car-image"
                       />

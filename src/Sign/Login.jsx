@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:5000/api/users/login', {
+      const res = await fetch('http://localhost:8001/api/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -47,9 +47,9 @@ const Login = () => {
 
   const handleLogin = (brand) => {
     const urls = {
-      kia: "http://localhost:5000/oauth/login",
-      genesis: "http://localhost:5000/oauth/login",
-      bluelink: "http://localhost:5000/oauth/login"
+      kia: "http://localhost:8001/oauth/login",
+      genesis: "http://localhost:8001/oauth/login",
+      bluelink: "http://localhost:8001/oauth/login"
     };
     window.location.href = urls[brand];
   };

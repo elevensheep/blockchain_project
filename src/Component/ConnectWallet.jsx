@@ -39,7 +39,7 @@ const ConnectWallet = () => {
       }
 
       // 3. 백엔드로 지갑 주소 전송 (JWT 포함)
-      const response = await fetch('http://localhost:5000/api/users/wallet', {
+      const response = await fetch('http://localhost:8001/api/users/wallet', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

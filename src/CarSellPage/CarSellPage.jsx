@@ -70,7 +70,7 @@ const CarSellPage = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/car/register', {
+            const response = await fetch('http://localhost:8001/api/car/register', {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`
