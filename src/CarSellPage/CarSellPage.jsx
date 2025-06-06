@@ -5,7 +5,7 @@ import VEHICLE_DATA from "../Data/VehicleData";
 const CarSellPage = () => {
     const [form, setForm] = useState({
         brand: '',
-        model: '',
+        car_model: '',
         subModel: '',
         year: '',
         carNumber: '',
@@ -14,28 +14,32 @@ const CarSellPage = () => {
         description: ''
     });
 
-    
-    const [imageFile, setImageFile] = useState(null);  // 이미지 파일 상태 추가
+    const [imageFile, setImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
-
-    // 판매 등록 결과 메시지 상태
     const [message, setMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setForm(prev => ({
-            ...prev,
-            [name]: value,
-            ...(name === "brand" && { model: '', subModel: '', year: '' }),
-            ...(name === "model" && { subModel: '', year: '' }),
-            ...(name === "subModel" && { year: '' }),
-        }));
+        let updatedForm = { ...form };
+
+        if (name === "brand") {
+            updatedForm = { brand: value, car_model: '', subModel: '', year: '', carNumber: '', price: '', location: '', description: '' };
+        } else if (name === "car_model") {
+            updatedForm = { ...form, car_model: value, subModel: '', year: '' };
+        } else if (name === "subModel") {
+            const [subModel, year] = value.split("|||");
+            updatedForm = { ...form, subModel, year };
+        } else {
+            updatedForm[name] = value;
+        }
+
+        setForm(updatedForm);
     };
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setImageFile(file);  // 이미지 파일 상태 저장
+            setImageFile(file);
             setImagePreview(URL.createObjectURL(file));
         }
     };
@@ -43,33 +47,33 @@ const CarSellPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-               const token = sessionStorage.getItem('login_token');
+        const token = sessionStorage.getItem('login_token');
         console.log('Access Token:', token);
 
         if (!token) {
             setMessage('로그인이 필요합니다.');
             return;
         }
-        const seller_id = "loggedInUserId"; // 실제 로그인 ID 넣기
 
-        // FormData 객체 생성
         const formData = new FormData();
+        formData.append('brand', form.brand);
         formData.append('car_model', form.car_model);
-        formData.append('car_year', Number(form.car_year));
-        formData.append('price', Number(form.price));
-        formData.append('type', form.type);
-        formData.append('manufacturer', form.manufacturer);
+        formData.append('subModel', form.subModel);
+        formData.append('car_year', form.year);
+        formData.append('price', form.price);
+        formData.append('carNumber', form.carNumber);
+        formData.append('location', form.location);
         formData.append('description', form.description);
 
         if (imageFile) {
-            formData.append('image', imageFile);  // 이미지 파일 첨부
+            formData.append('image', imageFile);
         }
 
         try {
             const response = await fetch('http://localhost:5000/api/car/register', {
                 method: 'POST',
-                                headers: {
-                    Authorization: `Bearer ${token}` // 🔐 JWT 토큰 포함
+                headers: {
+                    Authorization: `Bearer ${token}`
                 },
                 body: formData
             });
@@ -78,14 +82,14 @@ const CarSellPage = () => {
 
             if (response.ok) {
                 setMessage('차량이 성공적으로 등록되었습니다! 차량 ID: ' + result.car_id);
-                // 초기화
                 setForm({
-                    manufacturer: '',
-                    manufactureYear: '',
+                    brand: '',
+                    car_model: '',
+                    subModel: '',
+                    year: '',
                     carNumber: '',
                     price: '',
-                    type: '',
-                    carName: '',
+                    location: '',
                     description: ''
                 });
                 setImageFile(null);
@@ -99,11 +103,8 @@ const CarSellPage = () => {
     };
 
     const uniqueBrands = [...new Set(VEHICLE_DATA.map(v => v.brand))];
-    const filteredModels = VEHICLE_DATA.filter(v => v.brand === form.brand).map(v => v.model);
-    const uniqueModels = [...new Set(filteredModels)];
-
-    const filteredSubModels = VEHICLE_DATA.filter(v => v.brand === form.brand && v.model === form.model).map(v => v.subModel);
-    const uniqueSubModels = [...new Set(filteredSubModels)];
+    const uniqueModels = [...new Set(VEHICLE_DATA.filter(v => v.brand === form.brand).map(v => v.model))];
+    const filteredSubModels = VEHICLE_DATA.filter(v => v.brand === form.brand && v.model === form.car_model);
 
     return (
         <div className="car-sell-form-page">
@@ -143,10 +144,20 @@ const CarSellPage = () => {
                             </select>
                         </div>
                         <div className="car-sell-form-group">
-                            <label>세부모델</label>
-                            <select name="subModel" value={form.subModel} onChange={handleChange} className="car-sell-form-input" disabled={!form.model}>
+                            <label>세부모델 (연식 포함)</label>
+                            <select
+                                name="subModel"
+                                value={`${form.subModel}|||${form.year}`}
+                                onChange={handleChange}
+                                className="car-sell-form-input"
+                                disabled={!form.car_model}
+                            >
                                 <option value="">선택하세요</option>
-                                {uniqueSubModels.map((s, i) => <option key={i} value={s}>{s}</option>)}
+                                {filteredSubModels.map((v, i) => (
+                                    <option key={i} value={`${v.subModel}|||${v.year}`}>
+                                        {`${v.subModel} (${v.year})`}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                         <div className="car-sell-form-group">
@@ -162,6 +173,7 @@ const CarSellPage = () => {
                             <input name="price" value={form.price} onChange={handleChange} className="car-sell-form-input" placeholder="예: 2345만원" />
                         </div>
                     </div>
+
                     <div className="car-sell-form-group">
                         <label>설명</label>
                         <textarea name="description" value={form.description} onChange={handleChange} className="car-sell-form-textarea" />
