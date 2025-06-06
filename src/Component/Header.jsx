@@ -11,8 +11,9 @@ const Header = () => {
     // 로그인 여부 확인
     useEffect(() => {
         const checkToken = () => {
-            const token = sessionStorage.getItem("login_token");
-            setIsLoggedIn(!!token);
+            const login_token = sessionStorage.getItem("login_token");
+            const oauth_token = sessionStorage.getItem("access_token");
+            setIsLoggedIn(!!login_token || !!oauth_token);
         };
 
         checkToken();
@@ -27,10 +28,14 @@ const Header = () => {
 
     const handleLogout = () => {
         sessionStorage.removeItem('login_token');
+        sessionStorage.removeItem('access_token');
+        sessionStorage.removeItem('refresh_token'); // ← 사용 중이라면 이것도 함께 삭제
+
         setIsLoggedIn(false);
         alert("로그아웃 되었습니다.");
         navigate('/');
     };
+
 
     return (
         <header className="main-header">

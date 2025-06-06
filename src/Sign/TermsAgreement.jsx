@@ -1,14 +1,66 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Style/TermsAgreement.css";
 
 function TermsAgreement() {
     const [agreed, setAgreed] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
-    const handleAgree = () => {
-        if (agreed) {
-            alert("약관에 동의하셨습니다!");
-        } else {
+    const handleAgree = async () => {
+        if (!agreed) {
             alert("약관에 동의해주세요.");
+            return;
+        }
+
+        const accessToken = sessionStorage.getItem("access_token");
+        if (!accessToken) {
+            alert("토큰이 없습니다. 다시 로그인해주세요.");
+            navigate("/");
+            return;
+        }
+
+        try {
+            setIsLoading(true);
+
+            const userDataRaw = sessionStorage.getItem("temp_oauth_profile");
+            const oauthProvider = sessionStorage.getItem("oauth_provider");
+
+            if (!userDataRaw || !oauthProvider) {
+                alert("OAuth 정보가 유효하지 않습니다.");
+                return;
+            }
+
+            const userData = JSON.parse(userDataRaw); // 🔥 반드시 파싱 필요
+
+            const registerRes = await fetch("http://localhost:8001/oauth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    oauth_id: userData.id,
+                    name: userData.name,
+                    email: userData.email,
+                    phone_number: userData.mobileNum,
+                    oauth_provider: oauthProvider
+                })
+            });
+
+
+            const registerResult = await registerRes.json();
+
+            if (!registerRes.ok) {
+                throw new Error(registerResult.error || "사용자 등록 실패");
+            }
+
+            alert("약관 동의 및 사용자 등록 완료");
+            navigate("/mypage");
+        } catch (err) {
+            console.error("❌ 사용자 등록 실패:", err);
+            alert("오류 발생: " + err.message);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -50,9 +102,10 @@ function TermsAgreement() {
                         <span className="terms-text">[필수] 이용 약관에 동의합니다.</span>
                     </label>
                 </div>
+
                 <div className="terms-button-container">
-                    <button className="terms-submit-button" onClick={handleAgree}>
-                        동의하고 계속하기
+                    <button className="terms-submit-button" onClick={handleAgree} disabled={isLoading}>
+                        {isLoading ? "처리 중..." : "동의하고 계속하기"}
                     </button>
                 </div>
             </div>

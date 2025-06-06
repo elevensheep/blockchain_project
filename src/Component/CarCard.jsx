@@ -40,7 +40,9 @@ const CarCard = ({
                     ))}
                 </div>
             )}
-            <img src={image} alt={name} />
+            <div style={{ width: '90%', height: '200px', margin: '0 auto' }}>
+                <img src={image} alt={name} />
+            </div>
             <div className="car-name">{name}</div>
             {showPrice && price && <div className="car-price">{price}</div>}
             

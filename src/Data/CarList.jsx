@@ -12,7 +12,7 @@ const CarList = ({
     useEffect(() => {
         const fetchCars = async () => {
             try {
-                const response = await axios.get('http://192.168.0.105:8001/api/car/all');
+                const response = await axios.get('http://localhost:8001/api/car/all');
                 let carData = response.data.cars;
 
                 // ✅ created_at 기준 최신순 정렬
@@ -37,7 +37,7 @@ const CarList = ({
             {cars.map((car, index) => (
                 <CarCard
                     key={car._id || index}
-                    image={`http://192.168.0.105:8001/uploads/${car.images && car.images.length > 0 ? car.images[0] : 'default.jpg'}`}
+                    image={`http://localhost:8001/uploads/${car.images && car.images.length > 0 ? car.images[0] : 'default.jpg'}`}
                     name={`${car.car_model}`}
                     price={`${car.price ? car.price.toLocaleString() : '가격 정보 없음'} 만원`}
                     badges={['diagnose', 'trust']}

@@ -39,10 +39,35 @@ const CarSellPage = () => {
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setImageFile(file);
-            setImagePreview(URL.createObjectURL(file));
+            // WebP일 경우 변환 시도
+            if (file.type === 'image/webp') {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const img = new Image();
+                    img.onload = function () {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+
+                        // 변환 대상 포맷: 'image/jpeg' 또는 'image/png'
+                        canvas.toBlob((blob) => {
+                            const convertedFile = new File([blob], file.name.replace(/\.webp$/, '.jpg'), { type: 'image/jpeg' });
+                            setImageFile(convertedFile);
+                            setImagePreview(URL.createObjectURL(convertedFile));
+                        }, 'image/jpeg', 0.9); // 0.9는 품질 설정
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                setImageFile(file);
+                setImagePreview(URL.createObjectURL(file));
+            }
         }
     };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -59,7 +84,6 @@ const CarSellPage = () => {
         formData.append('brand', form.brand);
         formData.append('car_model', form.car_model);
         formData.append('subModel', form.subModel);
-        formData.append('car_year', form.year);
         formData.append('price', form.price);
         formData.append('carNumber', form.carNumber);
         formData.append('location', form.location);
