@@ -13,11 +13,20 @@ const CarCard = ({
     badges = [],
     showBadges = true,
     showPrice = true,
+    onDelete,           // 삭제 함수 prop 추가
+    carId,              // 삭제 시 사용할 차량 id도 prop으로 받기
 }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate('/carinfo');
+    };
+     // 삭제 버튼 클릭 시 이벤트 버블링 막기 위해 e.stopPropagation()
+    const handleDeleteClick = (e) => {
+        e.stopPropagation();
+        if(onDelete && carId) {
+            onDelete(carId);
+        }
     };
 
     return (
@@ -34,6 +43,17 @@ const CarCard = ({
             <img src={image} alt={name} />
             <div className="car-name">{name}</div>
             {showPrice && price && <div className="car-price">{price}</div>}
+            
+            {/* 삭제 버튼 추가 */}
+            {onDelete && (
+                <button
+                    className="delete-button"
+                    onClick={handleDeleteClick}
+                    title="삭제"
+                >
+                    삭제
+                </button>
+        )}
         </div>
     );
 };

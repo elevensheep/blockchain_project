@@ -13,6 +13,31 @@ function MyPage() {
   const access_token = sessionStorage.getItem("login_token");
   const refresh_token = sessionStorage.getItem("refresh_token");
 
+  const fetchMyCarList = async () => {
+    if (!access_token) return;
+
+    try {
+      const res = await fetch("http://localhost:5000/api/car/mycars", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`차량 목록 오류 응답: ${res.status} - ${text}`);
+      }
+
+      const json = await res.json();
+      console.log("✅ 받은 차량 리스트:", json);
+      setCarList(json);
+    } catch (err) {
+      console.error("차량 목록 요청 오류:", err);
+      setCarError(err.message);
+    }
+  };
+  
   // 토큰 갱신
   const handleRefresh = async () => {
     try {
@@ -50,6 +75,40 @@ function MyPage() {
     }
   };
 
+  const handleDeleteCar = async (carId) => {
+  if (!access_token) return;
+
+  const confirmDelete = window.confirm("정말로 이 차량을 삭제하시겠습니까?");
+  if (!confirmDelete) return;
+
+  try {
+    const res = await fetch(`http://localhost:5000/api/car/delete/${carId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`삭제 실패: ${res.status} - ${text}`);
+    }
+
+    // 성공 시 화면에서도 제거
+    setCarList((prevList) => ({
+      ...prevList,
+      cars: prevList.cars.filter((car) => car._id !== carId),
+    }));
+
+    alert("차량이 삭제되었습니다.");
+    await fetchMyCarList(); // ✅ 목록 다시 불러오기
+  } catch (err) {
+    console.error("삭제 요청 오류:", err);
+    alert("삭제 중 문제가 발생했습니다.");
+  }
+};
+
+
   // 프로필 가져오기
   useEffect(() => {
     const fetchProfile = async () => {
@@ -83,36 +142,12 @@ function MyPage() {
     fetchProfile();
   }, [access_token]);
 
-  // 차량 목록 가져오기
+ 
+
+  // 차량 목록 초기 호출
   useEffect(() => {
-    const fetchMyCarList = async () => {
-      if (!access_token) return;
-
-      try {
-        const res = await fetch("http://localhost:5000/api/car/mycars", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
-        });
-
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(`차량 목록 오류 응답: ${res.status} - ${text}`);
-        }
-
-        const json = await res.json();
-        console.log("✅ 받은 차량 리스트:", json);
-        setCarList(json);
-      } catch (err) {
-        console.error("차량 목록 요청 오류:", err);
-        setCarError(err.message);
-      }
-    };
-
     fetchMyCarList();
   }, [access_token]);
-
   return (
     <div className="profile-page">
       <div className="page-container">
@@ -152,7 +187,8 @@ function MyPage() {
                 {carList.cars.map((car) => (
                   <div className="car-card" key={car._id}>
                     <div className="car-name">{car.car_model} ({car.car_year})</div>
-                    <div className="car-price">가격: {car.price.toLocaleString()}원</div>
+                    <div className="car-price">
+                    가격: {(car.price ?? 0).toLocaleString()}원</div>
                     {car.description && (
                       <div className="car-desc">설명: {car.description}</div>
                     )}
@@ -163,6 +199,14 @@ function MyPage() {
                         className="car-image"
                       />
                     )}
+                    {/* ✅ 여기 삭제 버튼 추가 */}
+                    <button
+                      className="delete-button"
+                      onClick={() => handleDeleteCar(car._id)}
+                    >
+                      삭제
+                    </button>
+
                   </div>
                 ))}
               </div>
