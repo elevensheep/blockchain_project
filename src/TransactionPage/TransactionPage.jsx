@@ -1,33 +1,102 @@
 import "../Style/TransactionPage.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 
 const TransactionPage = () => {
-    const [transactionStatus, setTransactionStatus] = useState("거래 진행 중");
+    const { transactionId } = useParams();
+    const [transaction, setTransaction] = useState(null);
+    const [userId, setUserId] = useState(null);
+    const navigate = useNavigate();
 
-    const seller = {
-        name: "홍길동",
-        phone: "010-1234-5678",
-        location: "서울 강남구",
+    const jwtToken = sessionStorage.getItem("login_token");
+    const oauthToken = sessionStorage.getItem("access_token");
+    const token = jwtToken || oauthToken;
+    const isOAuth = !!oauthToken;
+
+    useEffect(() => {
+        const fetchTransaction = async () => {
+            try {
+                const res = await axios.get(`http://localhost:8001/api/transaction/${transactionId}`);
+                setTransaction(res.data.transaction);
+            } catch (err) {
+                console.error("🚨 거래 정보 불러오기 실패:", err);
+            }
+        };
+
+        const fetchUser = async () => {
+            try {
+                const res = await axios.get(
+                    isOAuth
+                        ? "http://localhost:8001/oauth/profile"
+                        : "http://localhost:8001/api/users/profile",
+                    {
+                        headers: { Authorization: `Bearer ${token}` },
+                    }
+                );
+
+                const id = isOAuth ? res.data.id : res.data._id;
+                setUserId(id);
+            } catch (err) {
+                console.error("🚨 사용자 정보 불러오기 실패:", err);
+            }
+        };
+
+        if (token) {
+            fetchUser();
+        }
+
+        fetchTransaction();
+    }, [transactionId, jwtToken, oauthToken]);
+
+    const handleApprove = async () => {
+        try {
+            const res = await axios.post(`http://localhost:8001/api/transaction/approve`, {
+                transactionId,
+                userId,
+            });
+
+            setTransaction(res.data.transaction);
+            alert("✅ 승인 완료");
+
+            if (!oauthToken) {
+                navigate('/nftmove', {
+                    state: {
+                        carId: car_id,
+                        buyerId: buyer_id,
+                    },
+                });
+            } else {
+                navigate('/mypage');
+            }
+
+        } catch (err) {
+            console.error("🚨 승인 실패:", err);
+            alert("❌ 승인에 실패했습니다.");
+        }
     };
 
-    const buyer = {
-        name: "김철수",
-        phone: "010-9876-5432",
-        location: "부산 해운대구",
-    };
+    if (!transaction || !userId) return <div>로딩 중...</div>;
 
-    const vehicle = {
-        brand: "현대",
-        model: "아반떼",
-        subModel: "1.6 가솔린",
-        year: "2020",
-        price: "1,200만원",
-        carNumber: "12가 3456",
-    };
+    if (userId !== transaction.seller_id && userId !== transaction.buyer_id) {
+        return <div>⛔ 거래 당사자만 접근할 수 있습니다.</div>;
+    }
 
-    const handleComplete = () => {
-        setTransactionStatus("거래 완료");
-    };
+    const {
+        buyer_id,
+        buyer_phone,
+        seller_id,
+        seller_phone,
+        price,
+        car_id,
+        buyer_approved,
+        seller_approved,
+        status,
+    } = transaction;
+
+    const isBuyer = userId === buyer_id;
+    const isSeller = userId === seller_id;
+    const hasApproved = (isBuyer && buyer_approved) || (isSeller && seller_approved);
 
     return (
         <div className="transaction-page">
@@ -36,50 +105,39 @@ const TransactionPage = () => {
 
                 <div className="transaction-status">
                     <span className="status-label">거래 상태:</span>
-                    <span className={`status-value ${transactionStatus === "거래 완료" ? "completed" : ""}`}>
-                        {transactionStatus}
+                    <span className={`status-value ${status === "completed" ? "completed" : ""}`}>
+                        {status === "completed" ? "거래 완료" : "대기 중"}
                     </span>
                 </div>
 
                 <div className="summary-box">
-                    <p><strong>{vehicle.year} {vehicle.brand} {vehicle.model} ({vehicle.subModel})</strong></p>
-                    <p>차량번호: {vehicle.carNumber} | 거래금액: {vehicle.price}</p>
+                    <p><strong>차량 ID:</strong> {car_id}</p>
+                    <p>거래금액: {price}원</p>
                 </div>
 
                 <div className="transaction-section">
-                    <h2 className="section-title">판매자 정보</h2>
+                    <h2 className="section-title">판매자</h2>
                     <div className="info-grid">
-                        <div><strong>이름:</strong> {seller.name}</div>
-                        <div><strong>전화번호:</strong> {seller.phone}</div>
-                        <div><strong>지역:</strong> {seller.location}</div>
+                        <div><strong>ID:</strong> {seller_id}</div>
+                        <div><strong>전화번호:</strong> {seller_phone}</div>
                     </div>
                 </div>
 
                 <div className="transaction-section">
-                    <h2 className="section-title">구매자 정보</h2>
+                    <h2 className="section-title">구매자</h2>
                     <div className="info-grid">
-                        <div><strong>이름:</strong> {buyer.name}</div>
-                        <div><strong>전화번호:</strong> {buyer.phone}</div>
-                        <div><strong>지역:</strong> {buyer.location}</div>
-                    </div>
-                </div>
-
-                <div className="transaction-section">
-                    <h2 className="section-title">차량 정보</h2>
-                    <div className="info-grid">
-                        <div><strong>제조사:</strong> {vehicle.brand}</div>
-                        <div><strong>모델:</strong> {vehicle.model}</div>
-                        <div><strong>세부모델:</strong> {vehicle.subModel}</div>
-                        <div><strong>연식:</strong> {vehicle.year}</div>
-                        <div><strong>차대번호:</strong> {vehicle.carNumber}</div>
-                        <div><strong>가격:</strong> {vehicle.price}</div>
+                        <div><strong>ID:</strong> {buyer_id}</div>
+                        <div><strong>전화번호:</strong> {buyer_phone}</div>
                     </div>
                 </div>
 
                 <div className="transaction-actions">
-                    <button className="action-button">전자 계약서 보기</button>
-                    <button className="action-button complete" onClick={handleComplete}>
-                        거래 완료 처리
+                    <button
+                        className="action-button complete"
+                        onClick={handleApprove}
+                        disabled={hasApproved || status === "completed"}
+                    >
+                        {hasApproved ? "승인 완료됨" : "거래 승인하기"}
                     </button>
                 </div>
             </div>

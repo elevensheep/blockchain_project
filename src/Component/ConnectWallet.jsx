@@ -68,7 +68,6 @@ const ConnectWallet = ({ onWalletConnected }) => {
       >
         {isLoading ? "⏳ 연결 중..." : account ? "🔗 연결됨" : "🦊 MetaMask 지갑 연결"}
       </button>
-      {account && <p className="wallet-address">연결된 지갑 주소: {account}</p>}
     </div>
   );
 };

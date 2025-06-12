@@ -15,6 +15,8 @@ import RedirectPage from './Component/RedirectPage';
 import MyPage from './MyPage/MyPage';
 import VerifyUser from './Component/VerifyUser';
 import './App.css';
+import NFTSellPage from './CarSellPage/NFTSellPage';
+import NFTMove from './TransactionPage/NFTMove';
 //import MyCarListTest from './Component/MyCarListTest';
 
 function App() {
@@ -30,12 +32,14 @@ function App() {
           <Route path="/terms" element={<TermsAgreement />} />
           <Route path='/list' element={<ListPage />} />
           <Route path="/addcar" element={<AddCarPage />} />
-          <Route path="/transaction" element={<TransactionPage />} />
+          <Route path="/transaction/:transactionId" element={<TransactionPage />} />
           <Route path="/sell" element={<CarSellPage />} />
-          <Route path="/carinfo" element={<CarInfoPage />} />
+          <Route path="/carinfo/:carId" element={<CarInfoPage />} />
           <Route path="/redirect" element={<RedirectPage />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/verify-user" element={<VerifyUser />} />
+          <Route path="/nftSell" element={<NFTSellPage />} />
+          <Route path="/nftmove" element={<NFTMove />} />
           {/* <Route path="/test" element={<MyCarListTest />} /> */}
         </Routes>
         <Footer />

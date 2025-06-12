@@ -8,34 +8,35 @@ const Header = () => {
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // 로그인 여부 확인
     useEffect(() => {
         const checkToken = () => {
             const login_token = sessionStorage.getItem("login_token");
             const oauth_token = sessionStorage.getItem("access_token");
-            setIsLoggedIn(!!login_token || !!oauth_token);
+            const isNowLoggedIn = !!login_token || !!oauth_token;
+            setIsLoggedIn(isNowLoggedIn);
         };
 
+        // 초기 상태 확인
         checkToken();
-        window.addEventListener("storage", checkToken);
-        window.addEventListener("focus", checkToken); // 브라우저 포커스 시 재확인
+
+        // 브라우저 포커스 시 & 일정 주기로 확인
+        window.addEventListener("focus", checkToken);
+        const interval = setInterval(checkToken, 1000); // 1초마다 확인
 
         return () => {
-            window.removeEventListener("storage", checkToken);
             window.removeEventListener("focus", checkToken);
+            clearInterval(interval);
         };
     }, []);
 
     const handleLogout = () => {
         sessionStorage.removeItem('login_token');
         sessionStorage.removeItem('access_token');
-        sessionStorage.removeItem('refresh_token'); // ← 사용 중이라면 이것도 함께 삭제
-
+        sessionStorage.removeItem('refresh_token');
         setIsLoggedIn(false);
         alert("로그아웃 되었습니다.");
         navigate('/');
     };
-
 
     return (
         <header className="main-header">

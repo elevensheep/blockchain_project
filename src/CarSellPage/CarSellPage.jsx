@@ -1,23 +1,17 @@
 import { useState } from 'react';
 import "../Style/CarSellPage.css";
 import VEHICLE_DATA from "../Data/VehicleData";
+import useRegisterCar from "../FetchComponent/useRegisterCar"; 
 
 const CarSellPage = () => {
     const [form, setForm] = useState({
-        brand: '',
-        car_model: '',
-        subModel: '',
-        year: '',
-        carNumber: '',
-        price: '',
-        location: '',
-        description: ''
+        brand: '', car_model: '', subModel: '', year: '',
+        carNumber: '', price: '', location: '', description: ''
     });
 
     const [imageFile, setImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
-    const [message, setMessage] = useState('');
-
+    const { registerCar, loading, message } = useRegisterCar();
     const handleChange = (e) => {
         const { name, value } = e.target;
         let updatedForm = { ...form };
@@ -39,7 +33,6 @@ const CarSellPage = () => {
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
-            // WebP일 경우 변환 시도
             if (file.type === 'image/webp') {
                 const reader = new FileReader();
                 reader.onload = function (event) {
@@ -50,13 +43,11 @@ const CarSellPage = () => {
                         canvas.height = img.height;
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0);
-
-                        // 변환 대상 포맷: 'image/jpeg' 또는 'image/png'
                         canvas.toBlob((blob) => {
                             const convertedFile = new File([blob], file.name.replace(/\.webp$/, '.jpg'), { type: 'image/jpeg' });
                             setImageFile(convertedFile);
                             setImagePreview(URL.createObjectURL(convertedFile));
-                        }, 'image/jpeg', 0.9); // 0.9는 품질 설정
+                        }, 'image/jpeg', 0.9);
                     };
                     img.src = event.target.result;
                 };
@@ -68,62 +59,27 @@ const CarSellPage = () => {
         }
     };
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const token = sessionStorage.getItem('login_token');
-        console.log('Access Token:', token);
-
         if (!token) {
-            setMessage('로그인이 필요합니다.');
+            alert('로그인이 필요합니다.');
             return;
         }
 
         const formData = new FormData();
-        formData.append('brand', form.brand);
-        formData.append('car_model', form.car_model);
-        formData.append('subModel', form.subModel);
-        formData.append('price', form.price);
-        formData.append('carNumber', form.carNumber);
-        formData.append('location', form.location);
-        formData.append('description', form.description);
+        Object.entries(form).forEach(([key, val]) => formData.append(key, val));
+        if (imageFile) formData.append('image', imageFile);
 
-        if (imageFile) {
-            formData.append('image', imageFile);
+        const { success } = await registerCar(token, formData);
+        if (success) {
+            setForm({ brand: '', car_model: '', subModel: '', year: '', carNumber: '', price: '', location: '', description: '' });
+            setImageFile(null);
+            setImagePreview(null);
+            alert('차량등록이 완료되었습니다');
         }
-
-        try {
-            const response = await fetch('http://localhost:8001/api/car/register', {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: formData
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                setMessage('차량이 성공적으로 등록되었습니다! 차량 ID: ' + result.car_id);
-                setForm({
-                    brand: '',
-                    car_model: '',
-                    subModel: '',
-                    year: '',
-                    carNumber: '',
-                    price: '',
-                    location: '',
-                    description: ''
-                });
-                setImageFile(null);
-                setImagePreview(null);
-            } else {
-                setMessage('차량 등록 실패: ' + (result.error || '알 수 없는 오류'));
-            }
-        } catch (error) {
-            setMessage('서버 통신 중 오류가 발생했습니다: ' + error.message);
-        }
+        
     };
 
     const uniqueBrands = [...new Set(VEHICLE_DATA.map(v => v.brand))];
@@ -203,7 +159,9 @@ const CarSellPage = () => {
                         <textarea name="description" value={form.description} onChange={handleChange} className="car-sell-form-textarea" />
                     </div>
                     <div className="car-sell-form-button-container">
-                        <button type="submit" className="car-sell-form-submit-button">판매 등록하기</button>
+                        <button type="submit" className="car-sell-form-submit-button" disabled={loading}>
+                            {loading ? '등록 중...' : '판매 등록하기'}
+                        </button>
                     </div>
                 </form>
 
